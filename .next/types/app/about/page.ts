@@ -1,4 +1,4 @@
-// File: /project/sandbox/user-workspace/src/app/about/page.tsx
+// File: C:\Users\ashut\OneDrive\Desktop\nextjs-geist-font-app\src\app\about\page.tsx
 import * as entry from '../../../../src/app/about/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

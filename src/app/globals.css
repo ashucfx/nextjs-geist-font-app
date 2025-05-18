@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(30, 86, 214, 0.3);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(30, 86, 214, 0.5);
+}
+
+/* Theme Transitions */
+.transition-theme {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Light Mode Overrides */
+:root:not(.dark) section[class*="from-gray-900"],
+:root:not(.dark) section[class*="to-gray-900"],
+:root:not(.dark) section[class*="from-black"],
+:root:not(.dark) section[class*="to-black"] {
+  background: linear-gradient(to bottom, #f8fafc, #ffffff);
+  color: #1a1a1a;
+}
+
+:root:not(.dark) .bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+:root:not(.dark) .text-gray-300 {
+  color: #4b5563;
+}
+
+:root:not(.dark) .text-white {
+  color: #1a1a1a;
+}
+
+:root:not(.dark) .border-white\/5 {
+  border-color: #e5e7eb;
+}
+
+/* Apply transitions to all sections */
+section, footer, nav, header, main, div {
+  @apply transition-theme;
+}
