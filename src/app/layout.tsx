@@ -1,4 +1,5 @@
-import './globals.css';
+import './globals.css'
+import RippleNexusCookieBanner from '../components/CookieConsent'
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider, ThemeScript } from '../context/ThemeContext';
@@ -33,6 +34,7 @@ export default function RootLayout({
             </main>
             <Footer />
           </div>
+          <RippleNexusCookieBanner />
         </ThemeProvider>
       </body>
     </html>

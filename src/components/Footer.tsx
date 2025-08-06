@@ -21,7 +21,7 @@ export default function Footer() {
                     />
                   </svg>
                 </div>
-                <span className="text-lg font-bold text-white">RIPPLE NEXUS</span>
+                <span className="text-lg font-bold dark:text-white text-gray-900">RIPPLE NEXUS</span>
               </div>
               <p className="text-gray-200 text-sm">
                 Build Bold. Scale Smart. Bridging Ideas to Impact — At the Nexus of Innovation.
@@ -151,7 +151,11 @@ export default function Footer() {
               <a href="/privacy-policy" className="text-gray-200 hover:text-[#1e56d6] transition-colors text-sm">
                 Privacy Policy
               </a>
-              <a href="/terms-of-service" className="text-gray-200 hover:text-[#1e56d6] transition-colors text-sm">
+              <a 
+                href="/terms-of-service" 
+                className="text-gray-200 hover:text-[#1e56d6] transition-colors text-sm"
+                aria-label="View our Terms of Service"
+              >
                 Terms of Service
               </a>
             </div>

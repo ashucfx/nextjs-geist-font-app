@@ -145,7 +145,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className="text-2xl font-medium dark:text-white text-gray-900 hover:text-[#1e56d6] dark:hover:text-[#1e56d6] transition-colors"
+                      className="text-2xl font-medium dark:text-white text-gray-800 hover:text-[#1e56d6] dark:hover:text-[#1e56d6] transition-colors"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.label}

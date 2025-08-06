@@ -89,11 +89,11 @@ export default function PrivacyPolicy() {
             transition={{ duration: 0.5 }}
             className="lg:w-3/4"
           >
-            <div className="prose prose-invert max-w-none">
+            <div className="prose prose-invert max-w-none text-gray-200">
               <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
               <div className="text-gray-400 mb-12">
-                <p>Effective Date: 1 August 2024</p>
-                <p>Last Updated: 17 May 2025</p>
+                <p>Effective Date: 20 May 2025</p>
+                <p>Last Updated: 20 May 2025</p>
               </div>
 
               <section id="introduction" data-title="Introduction" className="mb-12">
