@@ -8,12 +8,12 @@ import Footer from '../components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Ripple Nexus - Digital Solutions',
-  description: 'Build Bold. Scale Smart. Bridging Ideas to Impact — At the Nexus of Innovation.',
-  icons: {
-    icon: "/favicon.ico",
-  },
+export const metadata = {
+  title: "Ripple Nexus - Digital Solutions",
+  description: "Build Bold. Scale Smart. Bridging Ideas to Impact — At the Nexus of Innovation.",
+  icons: [
+    { url: "/favicon.ico", type: "image/x-icon" }
+  ],
 };
 
 export default function RootLayout({
