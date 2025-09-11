@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
@@ -30,10 +31,10 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed w-full z-50 transition-all duration-300 ${
+        className={`fixed w-full z-50 transition-all duration-700 ease-in-out ${
           isScrolled 
-            ? 'dark:bg-gray-900/95 bg-white/95 backdrop-blur-lg border-b dark:border-gray-800 border-gray-200' 
-            : 'dark:bg-gray-900/50 bg-white/50 backdrop-blur-sm'
+            ? 'dark:bg-gray-900/95 bg-white/98 backdrop-blur-xl border-b dark:border-gray-800/50 border-gray-200/30 shadow-2xl dark:shadow-gray-900/50 shadow-gray-200/50' 
+            : 'dark:bg-gray-900/20 bg-white/80 backdrop-blur-md'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,22 +42,18 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3 group">
               <motion.div 
-                className="w-8 h-8"
-                whileHover={{ rotate: 180, scale: 1.1 }}
+                className="relative w-12 h-12 flex-shrink-0"
+                whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 200, damping: 10 }}
               >
-                <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
-                  <path
-                    d="M12 4L20 18H4L12 4Z"
-                    fill="#1e56d6"
-                    className="transform origin-center transition-transform group-hover:opacity-80"
-                  />
-                  <path
-                    d="M12 8L16 16H8L12 8Z"
-                    fill="#1e56d6"
-                    className="transform origin-center transition-transform opacity-50 group-hover:opacity-100"
-                  />
-                </svg>
+                <Image
+                  src="/images/lg-01.png"
+                  alt="Ripple Nexus Logo"
+                  fill
+                  className="object-contain transition-all duration-300 group-hover:brightness-110 dark:brightness-100 brightness-90"
+                  sizes="48px"
+                  priority
+                />
               </motion.div>
               <motion.div 
                 className="text-xl font-bold flex items-center"
@@ -65,7 +62,7 @@ export default function Navbar() {
               >
                 <span className="text-[#1e56d6] hover:text-[#2563eb] transition-colors duration-300">RIPPLE</span>
                 <span className="mx-1.5"></span>
-                <span className="dark:text-white text-gray-900 hover:text-gray-700 dark:hover:text-gray-200 transition-colors duration-300">NEXUS</span>
+                <span className="dark:text-white text-gray-900 hover:text-[#1e56d6] dark:hover:text-[#1e56d6] transition-colors duration-300">NEXUS</span>
               </motion.div>
             </Link>
 
@@ -75,16 +72,16 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-lg font-medium dark:text-white text-gray-900 hover:text-[#1e56d6] dark:hover:text-[#1e56d6] transition-colors relative group"
+                  className="text-base font-semibold dark:text-gray-200 text-gray-700 hover:text-[#1e56d6] dark:hover:text-[#1e56d6] transition-all duration-500 relative group px-4 py-3 rounded-lg hover:bg-[#1e56d6]/10"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#1e56d6] transition-all group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-[#1e56d6] to-blue-600 transition-all duration-500 group-hover:w-3/4 rounded-full"></span>
                 </Link>
               ))}
               <ThemeToggle />
               <Link
                 href="/contact"
-                className="px-4 py-2 bg-[#1e56d6] text-white rounded-lg hover:bg-[#1e56d6]/90 transition-all duration-300 shadow-lg hover:shadow-[#1e56d6]/20 font-medium"
+                className="px-6 py-3 bg-gradient-to-r from-[#1e56d6] to-blue-600 text-white rounded-lg hover:from-[#1e56d6]/90 hover:to-blue-600/90 transition-all duration-500 shadow-lg hover:shadow-xl hover:shadow-[#1e56d6]/40 font-semibold text-sm tracking-wide hover:scale-110 transform"
               >
                 Get Started
               </Link>

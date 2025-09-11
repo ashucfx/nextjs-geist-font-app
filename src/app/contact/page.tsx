@@ -69,8 +69,8 @@ export default function Contact() {
                 >
                   <h3 className="text-xl font-semibold text-[#1e56d6] mb-3">Email</h3>
                   <p className="text-gray-300">
-                    <a href="mailto:info@ripplenexus.com" className="hover:text-[#1e56d6] transition-colors">
-                      info@ripplenexus.com
+                    <a href="mailto:info@theripplenexus.com" className="hover:text-[#1e56d6] transition-colors">
+                      info@theripplenexus.com
                     </a>
                   </p>
                 </motion.div>

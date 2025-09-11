@@ -55,7 +55,7 @@ export default function About() {
               Our name is our mission: "Ripple" symbolizes the power of a single innovation to create waves of impact, and "Nexus" is the convergence point where bold ideas, smart technology, and meaningful strategy unite. Together, Ripple Nexus stands for extraordinary transformation born at the intersection of purpose and possibility.
             </p>
             <p className="text-xl leading-relaxed">
-              As a brand of NEXWAVE WEB SOLUTIONS (OPC) PRIVATE LIMITED, we aim to be the silent force behind the world's most intuitive digital platforms, intelligent applications, and scalable cloud-based ecosystems.
+              As a Sole Proprietorship business, we aim to be the silent force behind the world's most intuitive digital platforms, intelligent applications, and scalable cloud-based ecosystems.
             </p>
           </motion.div>
         </div>
@@ -107,7 +107,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* Certifications Section */}
+      {/* Our Values Section */}
       <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -118,20 +118,20 @@ export default function About() {
             className="lg:text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-[#1e56d6] mb-6">
-              Our Certifications
+              Our Values
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             {[
               {
-                title: "ISO Certified",
-                description: "Meeting international quality standards for software development and digital services"
+                title: "Quality Excellence",
+                description: "Delivering exceptional quality through rigorous testing and best practices in software development"
               },
               {
-                title: "Trademark Registered",
-                description: "NEXWAVE WEB SOLUTIONS (OPC) PRIVATE LIMITED - Your trusted technology partner"
+                title: "Client Trust",
+                description: "Ripple Nexus - Your trusted technology partner committed to your success"
               }
-            ].map((cert, index) => (
+            ].map((value, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -153,8 +153,8 @@ export default function About() {
                       )}
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-[#1e56d6] mb-4">{cert.title}</h3>
-                  <p className="text-gray-300">{cert.description}</p>
+                  <h3 className="text-2xl font-bold text-[#1e56d6] mb-4">{value.title}</h3>
+                  <p className="text-gray-300">{value.description}</p>
                 </div>
               </motion.div>
             ))}
