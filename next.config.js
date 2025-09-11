@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+
   images: {
     remotePatterns: [
       {
@@ -7,9 +9,10 @@ const nextConfig = {
         hostname: 'images.pexels.com',
         port: '',
         pathname: '/**',
-      }
+      },
     ],
   },
+
   webpack(config) {
     return config;
   },
