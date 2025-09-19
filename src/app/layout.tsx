@@ -8,13 +8,18 @@ import Footer from '../components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Ripple Nexus - Digital Solutions",
   description: "Build Bold. Scale Smart. Bridging Ideas to Impact — At the Nexus of Innovation.",
-  icons: [
-    { url: "/favicon.ico", type: "image/x-icon" }
-  ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/apple-touch-icon.png", rel: "apple-touch-icon" },
+    ],
+  },
 };
+
 
 export default function RootLayout({
   children,
@@ -26,6 +31,7 @@ export default function RootLayout({
       <head>
         <ThemeScript />
       </head>
+      
       <body className={`${inter.className} min-h-screen antialiased transition-colors duration-300 dark:bg-gray-900 bg-gray-50 dark:text-white text-gray-900`}>
         <ThemeProvider>
           <div className="flex flex-col min-h-screen dark:bg-gray-900 bg-gray-50 transition-colors duration-300">
