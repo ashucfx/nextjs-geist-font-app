@@ -11,13 +11,6 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "Ripple Nexus - Digital Solutions",
   description: "Build Bold. Scale Smart. Bridging Ideas to Impact — At the Nexus of Innovation.",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.png", type: "image/png" },
-      { url: "/apple-touch-icon.png", rel: "apple-touch-icon" },
-    ],
-  },
 };
 
 
