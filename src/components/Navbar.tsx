@@ -154,13 +154,19 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -10 }}
                 >
-                  <Link
-                    href="/contact"
-                    className="px-6 py-3 bg-[#1e56d6] text-white rounded-lg hover:bg-[#1e56d6]/90 transition-all duration-300 font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Get Started
-                  </Link>
+<Link
+  href="/contact"
+  className="px-6 py-3 bg-gradient-to-r from-[#1e56d6] to-blue-600 
+             text-white rounded-lg font-semibold text-sm tracking-wide 
+             shadow-lg hover:shadow-xl hover:shadow-[#1e56d6]/40 
+             hover:from-[#1e56d6]/90 hover:to-blue-600/90 
+             hover:scale-110 transform transition-all duration-500"
+>
+  Get Started
+</Link>
+
+
+
                 </motion.div>
               </div>
             </div>

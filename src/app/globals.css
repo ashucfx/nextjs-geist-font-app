@@ -43,8 +43,7 @@
 :root:not(.dark) .text-gray-300 {
   color: #4b5563;
 }
-
-:root:not(.dark) .text-white {
+:root:not(.dark) :not(button):not(a).text-white {
   color: #1a1a1a;
 }
 
@@ -55,4 +54,8 @@
 /* Apply transitions to all sections */
 section, footer, nav, header, main, div {
   @apply transition-theme;
+}
+
+.btn-white-text {
+  color: #ffffff !important;
 }
