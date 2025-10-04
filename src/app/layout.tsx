@@ -1,6 +1,6 @@
 import './globals.css';
 import RippleNexusCookieBanner from '../components/CookieConsent';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider, ThemeScript } from '../context/ThemeContext';
 import Navbar from '../components/Navbar';
@@ -19,8 +19,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const viewport: Viewport = {
   width: 'device-width',
-  initialScale: 1,
-  shrinkToFit: 'no',
+  initialScale: 1
 };
 
 export const metadata: Metadata = {
