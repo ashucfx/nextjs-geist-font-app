@@ -6,13 +6,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-// --- Interface for detailed Service Data (Unchanged) ---
+// --- Interface for detailed Service Data (FIXED: Added optional 'id' property) ---
 interface Service {
+  id?: number; // <-- FIX: Added optional id for service tracking
   title: string;
   description: string;
   image: string;
   features: string[];
-  details: React.ReactNode; // CHANGED: Now accepts a ReactNode (JSX)
+  details: React.ReactNode; 
   tag: string; 
 }
 
@@ -21,7 +22,7 @@ const allServices: Service[] = [
   {
     title: "Enterprise Web Development",
     description: "Custom, scalable websites and applications for major organizations.",
-    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+    image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", 
     tag: "Core Technology",
     details: (
       <>
@@ -40,7 +41,7 @@ const allServices: Service[] = [
   {
     title: "Mobile Application Strategy",
     description: "Native and cross-platform excellence for robust mobile experiences.",
-    image: "https://images.pexels.com/photos/16129703/pexels-photo-16129703.jpeg",
+    image: "https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     tag: "Core Technology",
     details: (
       <>
@@ -59,7 +60,7 @@ const allServices: Service[] = [
   {
     title: "Advanced Digital Marketing",
     description: "Data-driven strategies for compliant, measurable growth.",
-    image: "https://images.pexels.com/photos/95916/pexels-photo-95916.jpeg",
+    image: "https://images.pexels.com/photos/3862630/pexels-photo-3862630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     tag: "Strategy",
     details: (
       <>
@@ -78,7 +79,7 @@ const allServices: Service[] = [
   {
     title: "UI/UX and Design Systems",
     description: "Creating highly intuitive and professional user experiences.",
-    image: "https://images.pexels.com/photos/1181487/pexels-photo-1181487.jpeg",
+    image: "https://images.pexels.com/photos/1031201/pexels-photo-1031201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     tag: "Design",
     details: (
       <>
@@ -97,7 +98,7 @@ const allServices: Service[] = [
   {
     title: "Cloud Governance & DevOps",
     description: "Scalable, secure cloud infrastructure management.",
-    image: "https://images.pexels.com/photos/5475758/pexels-photo-5475758.jpeg",
+    image: "https://images.pexels.com/photos/706525/pexels-photo-706525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     tag: "Infrastructure",
     details: (
       <>
@@ -138,7 +139,7 @@ const allServices: Service[] = [
     description: "Optimize your personal brand for career advancement.",
     image: "https://images.pexels.com/photos/5989925/pexels-photo-5989925.jpeg",
     tag: "Personal Strategy",
-    // FINAL FIX: Content moved into JSX fragment with <strong> tag
+    // CONTENT FIX: Removed markdown stars and used <strong> tag
     details: (
       <>
         Leverage our strategic expertise to present your professional journey with maximum impact. We help position you for career advancement, assisting both <strong>Executive and Mid-Career professionals</strong> through expert digital and document optimization.
@@ -190,7 +191,6 @@ const ServiceDetailModal: React.FC<{ service: Service, onClose: () => void }> = 
                 </div>
 
                 <div className="p-6 space-y-6">
-                    {/* Displaying the ReactNode content */}
                     <p className="text-lg font-medium text-gray-700 dark:text-gray-300">{service.details}</p> 
                     
                     <div className="border-t pt-4 dark:border-gray-700 border-gray-300">
