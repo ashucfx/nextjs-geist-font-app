@@ -22,8 +22,8 @@ export default function CancellationPolicyPage() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="dark:bg-gray-900 bg-white rounded-2xl shadow-2xl border dark:border-gray-800 border-gray-200 overflow-hidden">
           
-          {/* Header */}
-          <div className className="bg-gradient-to-r from-[#1e56d6] to-blue-600 px-8 md:px-12 py-12">
+          {/* Header FIX: Added wrapper div and corrected syntax */}
+          <div className="bg-gradient-to-r from-[#1e56d6] to-blue-600 px-8 md:px-12 py-12">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Service Cancellation Policy</h1>
             <div className="text-blue-100 text-base">
               <p>Effective Date: 20 May 2025</p>
@@ -58,7 +58,7 @@ export default function CancellationPolicyPage() {
                 </div>
               </section>
 
-              {/* Section 2: Cancellation Stages (PROTECTIVE LANGUAGE) */}
+              {/* Section 2: Cancellation Stages (ABSOLUTE PROTECTION) */}
               <section className="space-y-4">
                 <PolicyTitle number={2} title="Cancellation By Project Stage" />
                 <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
@@ -74,13 +74,13 @@ export default function CancellationPolicyPage() {
                     </ul>
                   </div>
 
-                  {/* Stage 2 - UPDATED: ABSOLUTE NON-REFUND, PLUS DISCRETIONARY CLAUSE */}
+                  {/* Stage 2 - ABSOLUTE NON-REFUND, SIMPLIFIED */}
                   <div className="p-4 dark:bg-gray-800 bg-gray-100 rounded-lg">
                     <h3 className="text-lg font-semibold text-[#1e56d6] mb-1">2.2 Service Initiated (Post SOW Execution)</h3>
                     <ul className="list-disc pl-6 space-y-1 text-sm dark:text-gray-300 text-gray-700">
-                      <li>Upon formal execution of the SOW or receipt of the initial milestone payment, <strong>all fees paid are non-refundable.</strong></li>                  {/* NEW DISCRETIONARY CLAUSE ADDED HERE */}
+                      <li>Upon formal execution of the SOW or receipt of the initial milestone payment, all fees paid are non-refundable.</li>
                       <li>Partial refunds may be considered at our discretion for unfulfilled scopes due to internal limitations.</li>
-                      <li>Any request for cancellation after this stage will result in the <strong>forfeiture of all payments made to date.</strong></li>
+                      <li>Any request for cancellation after this stage will result in the forfeiture of all payments made to date.</li>
                     </ul>
                   </div>
 
