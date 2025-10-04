@@ -22,7 +22,7 @@ const allServices: Service[] = [
   {
     title: "Enterprise Web Development",
     description: "Custom, scalable websites and applications for major organizations.",
-    image: "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2", 
+    image: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg", 
     tag: "Core Technology",
     details: (
       <>
@@ -41,7 +41,7 @@ const allServices: Service[] = [
   {
     title: "Mobile Application Strategy",
     description: "Native and cross-platform excellence for robust mobile experiences.",
-    image: "https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg",
     tag: "Core Technology",
     details: (
       <>
@@ -60,7 +60,7 @@ const allServices: Service[] = [
   {
     title: "Advanced Digital Marketing",
     description: "Data-driven strategies for compliant, measurable growth.",
-    image: "https://images.pexels.com/photos/3862630/pexels-photo-3862630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://images.pexels.com/photos/95916/pexels-photo-95916.jpeg",
     tag: "Strategy",
     details: (
       <>
