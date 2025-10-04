@@ -571,6 +571,10 @@ html.light {
 .inset-0 {
   inset: 0px;
 }
+.inset-x-0 {
+  left: 0px;
+  right: 0px;
+}
 .bottom-0\.5 {
   bottom: 0.125rem;
 }
@@ -595,6 +599,12 @@ html.light {
 .top-4 {
   top: 1rem;
 }
+.top-20 {
+  top: 5rem;
+}
+.bottom-0 {
+  bottom: 0px;
+}
 .z-10 {
   z-index: 10;
 }
@@ -609,6 +619,9 @@ html.light {
 }
 .z-\[100\] {
   z-index: 100;
+}
+.z-\[60\] {
+  z-index: 60;
 }
 .mx-1 {
   margin-left: 0.25rem;
@@ -744,6 +757,9 @@ html.light {
 }
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-full {
+  min-height: 100%;
 }
 .w-0 {
   width: 0px;
@@ -1291,6 +1307,12 @@ html.light {
 }
 .pt-8 {
   padding-top: 2rem;
+}
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+.pt-12 {
+  padding-top: 3rem;
 }
 .text-left {
   text-align: left;

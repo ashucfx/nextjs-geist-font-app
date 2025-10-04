@@ -141,26 +141,25 @@ export default function Navbar() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  strokeWidth={2} // Ensure stroke width is defined on the SVG
                 >
                   {isMobileMenuOpen ? (
                     <motion.path
-                        initial={{ rotate: 0 }}
-                        animate={{ rotate: 90 }}
-                        transition={{ duration: 0.2 }}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <motion.path
-                        initial={{ rotate: 90 }}
+                        initial={false}
                         animate={{ rotate: 0 }}
                         transition={{ duration: 0.2 }}
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 6h16M4 12h16M4 18h16"
+                        d="M6 18L18 6M6 6l12 12" // X icon path
+                    />
+                  ) : (
+                    <motion.path
+                        initial={false}
+                        animate={{ rotate: 0 }}
+                        transition={{ duration: 0.2 }}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16" // Hamburger icon path
                     />
                   )}
                 </svg>
@@ -176,10 +175,10 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 top-0 pt-20 z-40 md:hidden"
+            className="fixed inset-x-0 top-20 bottom-0 z-40 md:hidden" 
           >
-            <div className="fixed inset-0 dark:bg-gray-900/98 bg-white/98 backdrop-blur-xl shadow-2xl">
-              <div className="flex flex-col items-center justify-start py-10 space-y-6">
+            <div className="fixed inset-x-0 top-20 bottom-0 dark:bg-gray-900/98 bg-white/98 backdrop-blur-xl shadow-2xl overflow-y-auto">
+              <div className="flex flex-col items-center justify-start pt-12 pb-10 space-y-6"> 
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.href}

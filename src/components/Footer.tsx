@@ -16,12 +16,13 @@ export default function Footer() {
   ];
 
   const serviceLinks = [
-    { href: '/services/enterprise', label: 'Enterprise Systems' },
-    { href: '/services/data-analytics', label: 'Data & Analytics' },
-    { href: '/services/cloud', label: 'Cloud Governance' },
-    { href: '/services/security', label: 'Security Consulting' },
-    { href: '/services/ui-ux', label: 'UX/UI Engineering' },
-    { href: '/services/development', label: 'Bespoke Development' },
+    { href: '/services', label: 'Bespoke Development' },
+    { href: '/services', label: 'Digital Marketing' },
+    { href: '/services', label: 'Cloud Governance & DevOps' },
+    { href: '/services', label: 'App Development' },
+    { href: '/services', label: 'UX/UI Engineering' },
+    { href: '/services', label: 'Enterprise Systems' },
+    { href: '/services', label: 'Career & Professional Branding' },
   ];
   
   const socialLinks = [
