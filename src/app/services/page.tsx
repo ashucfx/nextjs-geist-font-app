@@ -79,7 +79,7 @@ const allServices: Service[] = [
   {
     title: "UI/UX and Design Systems",
     description: "Creating highly intuitive and professional user experiences.",
-    image: "https://images.pexels.com/photos/1031201/pexels-photo-1031201.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
     tag: "Design",
     details: (
       <>
@@ -98,7 +98,7 @@ const allServices: Service[] = [
   {
     title: "Cloud Governance & DevOps",
     description: "Scalable, secure cloud infrastructure management.",
-    image: "https://images.pexels.com/photos/706525/pexels-photo-706525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://images.pexels.com/photos/6963944/pexels-photo-6963944.jpeg",
     tag: "Infrastructure",
     details: (
       <>

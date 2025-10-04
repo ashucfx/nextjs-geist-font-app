@@ -27,7 +27,7 @@ export default function Footer() {
   const socialLinks = [
       { name: 'linkedin', url: 'https://www.linkedin.com/company/ripple-nexus/' },
       { name: 'twitter', url: 'https://twitter.com/RippleNexus' },
-      { name: 'instagram', url: 'https://www.instagram.com/theripplenexus/' },
+      { name: 'instagram', url: 'https://www.instagram.com/ripplenexus/' },
   ];
   
   return (
