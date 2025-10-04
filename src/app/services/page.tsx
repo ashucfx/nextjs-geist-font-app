@@ -1,149 +1,309 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
+// --- Interface for detailed Service Data (Unchanged) ---
+interface Service {
+  title: string;
+  description: string;
+  image: string;
+  features: string[];
+  details: React.ReactNode; // CHANGED: Now accepts a ReactNode (JSX)
+  tag: string; 
+}
+
+// --- Synthesized Data with Final Content Fix ---
+const allServices: Service[] = [
+  {
+    title: "Enterprise Web Development",
+    description: "Custom, scalable websites and applications for major organizations.",
+    image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+    tag: "Core Technology",
+    details: (
+      <>
+        We build secure, high-traffic web platforms, focusing on complex integration and long-term maintainability essential for enterprise environments.
+      </>
+    ),
+    features: [
+      "Custom Web Application Development",
+      "E-commerce & B2B Solutions",
+      "API Development & Integration",
+      "CMS Implementation & Headless Architecture",
+      "Progressive Web Apps (PWA)",
+      "Legacy System Integration"
+    ]
+  },
+  {
+    title: "Mobile Application Strategy",
+    description: "Native and cross-platform excellence for robust mobile experiences.",
+    image: "https://images.pexels.com/photos/16129703/pexels-photo-16129703.jpeg",
+    tag: "Core Technology",
+    details: (
+      <>
+        Our mobile solutions focus on security, performance, and intuitive UI/UX design to deliver high-engagement user applications across iOS and Android.
+      </>
+    ),
+    features: [
+      "Native iOS & Android Development",
+      "Cross-platform Development (React Native/Flutter)",
+      "Mobile App UI/UX Design",
+      "App Maintenance & Support",
+      "App Store Optimization (ASO)",
+      "Embedded Systems Integration"
+    ]
+  },
+  {
+    title: "Advanced Digital Marketing",
+    description: "Data-driven strategies for compliant, measurable growth.",
+    image: "https://images.pexels.com/photos/95916/pexels-photo-95916.jpeg",
+    tag: "Strategy",
+    details: (
+      <>
+        We deploy advanced analytics and SEO methodologies to ensure your digital footprint is authoritative, compliant, and reaches the right audience.
+      </>
+    ),
+    features: [
+      "Search Engine Optimization (SEO) & Audits",
+      "Targeted Social Media Campaigns",
+      "Content Strategy & Production",
+      "PPC Management (Google/Bing)",
+      "Analytics & Performance Reporting",
+      "Lead Nurturing Automation"
+    ]
+  },
+  {
+    title: "UI/UX and Design Systems",
+    description: "Creating highly intuitive and professional user experiences.",
+    image: "https://images.pexels.com/photos/1181487/pexels-photo-1181487.jpeg",
+    tag: "Design",
+    details: (
+      <>
+        We specialize in developing scalable Design Systems and conducting rigorous usability testing to ensure flawless interaction across all platforms and devices.
+      </>
+    ),
+    features: [
+      "User Interface (UI) Design",
+      "User Experience (UX) Architecture",
+      "Wireframing & Prototyping",
+      "Design System Development (Tokens/Components)",
+      "Accessibility (WCAG) Compliance",
+      "Usability Testing & Iteration"
+    ]
+  },
+  {
+    title: "Cloud Governance & DevOps",
+    description: "Scalable, secure cloud infrastructure management.",
+    image: "https://images.pexels.com/photos/5475758/pexels-photo-5475758.jpeg",
+    tag: "Infrastructure",
+    details: (
+      <>
+        Our Cloud Governance services cover architecture, migration, and continuous security monitoring across AWS, Azure, and GCP, ensuring operational resilience.
+      </>
+    ),
+    features: [
+      "Cloud Infrastructure Setup (AWS/Azure/GCP)",
+      "Managed Cloud Migration",
+      "CI/CD Pipeline Implementation (DevOps)",
+      "Disaster Recovery Planning",
+      "Cloud Security & Compliance Audits",
+      "Serverless Architecture Consulting"
+    ]
+  },
+  {
+    title: "Enterprise Systems (ERP/CRM)",
+    description: "Comprehensive business systems for internal efficiency.",
+    image: "https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    tag: "Business Systems",
+    details: (
+      <>
+        We design and implement custom ERP (Enterprise Resource Planning) and CRM solutions tailored to streamline core business functions and boost organizational output.
+      </>
+    ),
+    features: [
+      "Bespoke ERP & CRM Solutions",
+      "CRM Development & Integration",
+      "Business Intelligence",
+      "Custom Software Development",
+      "Legacy System Modernization",
+      "Enterprise Data Integration"
+    ]
+  },
+  {
+    id: 7,
+    title: "Career & Professional Branding",
+    description: "Optimize your personal brand for career advancement.",
+    image: "https://images.pexels.com/photos/5989925/pexels-photo-5989925.jpeg",
+    tag: "Personal Strategy",
+    // FINAL FIX: Content moved into JSX fragment with <strong> tag
+    details: (
+      <>
+        Leverage our strategic expertise to present your professional journey with maximum impact. We help position you for career advancement, assisting both <strong>Executive and Mid-Career professionals</strong> through expert digital and document optimization.
+      </>
+    ),
+    features: [
+      "Executive & Mid-Career Resume Revision",
+      "ATS Compliant Document Formatting",
+      "LinkedIn Profile Optimization (Banner & Picture)",
+      "Targeted Cover Letter Composition",
+      "Personalized Career Branding Strategy",
+      "Interview Strategy Coaching"
+    ]
+  }
+];
+
+
+// --- MODAL Component for Detailed View (Unchanged logic, uses new styles) ---
+const ServiceDetailModal: React.FC<{ service: Service, onClose: () => void }> = ({ service, onClose }) => {
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm overflow-y-auto cursor-pointer p-4 pt-20 sm:p-8"
+            onClick={onClose}
+        >
+            <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 50, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="relative max-w-3xl mx-auto dark:bg-gray-800 bg-white rounded-xl shadow-2xl cursor-default my-8"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 dark:text-white text-gray-900 hover:text-[#1e56d6] transition-colors z-50 p-2 rounded-full dark:bg-gray-700/50 bg-gray-100/50"
+                    aria-label="Close service details"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+
+                <div className="relative h-48 w-full overflow-hidden rounded-t-xl">
+                    <Image src={service.image} alt={service.title} fill className="object-cover" sizes="100vw" />
+                    <div className="absolute inset-0 bg-black/70 flex items-center p-8"> 
+                        <h2 className="text-3xl font-extrabold text-white leading-tight">{service.title}</h2>
+                    </div>
+                </div>
+
+                <div className="p-6 space-y-6">
+                    {/* Displaying the ReactNode content */}
+                    <p className="text-lg font-medium text-gray-700 dark:text-gray-300">{service.details}</p> 
+                    
+                    <div className="border-t pt-4 dark:border-gray-700 border-gray-300">
+                        <h3 className="text-2xl font-bold text-[#1e56d6] mb-4">What's Included</h3>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                            {service.features.map((feature, i) => (
+                                <li key={i} className="flex items-center text-gray-700 dark:text-gray-300">
+                                    <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                                    {feature}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="text-center pt-4">
+                        <Link 
+                          href="/contact" 
+                          onClick={onClose} 
+                          className="inline-block px-8 py-3 bg-[#1e56d6] text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                        >
+                          Inquire About This Service
+                        </Link>
+                    </div>
+                </div>
+            </motion.div>
+        </motion.div>
+    );
+};
+
+
+// --- Main Page Component ---
 export default function Services() {
-  const services = [
-    {
-      title: "Web Development",
-      description: "Custom websites that drive results",
-      image: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800",
-      features: [
-        "Custom Website Development",
-        "E-commerce Solutions",
-        "Progressive Web Apps (PWA)",
-        "Web Application Development",
-        "CMS Development",
-        "API Development & Integration"
-      ]
-    },
-    {
-      title: "Mobile Development",
-      description: "Native and cross-platform excellence",
-      image: "https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=800",
-      features: [
-        "iOS App Development",
-        "Android App Development",
-        "Cross-platform Development",
-        "Mobile App UI/UX Design",
-        "App Maintenance & Support",
-        "App Store Optimization"
-      ]
-    },
-    {
-      title: "Digital Marketing",
-      description: "Data-driven growth strategies",
-      image: "https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg?auto=compress&cs=tinysrgb&w=800",
-      features: [
-        "Search Engine Optimization (SEO)",
-        "Social Media Marketing",
-        "Content Marketing",
-        "Email Marketing",
-        "PPC Advertising",
-        "Analytics & Reporting"
-      ]
-    },
-    {
-      title: "UI/UX Design",
-      description: "Intuitive user experiences",
-      image: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
-      features: [
-        "User Interface Design",
-        "User Experience Design",
-        "Wireframing & Prototyping",
-        "Design Systems",
-        "Responsive Design",
-        "Usability Testing"
-      ]
-    },
-    {
-      title: "Cloud Services",
-      description: "Scalable cloud solutions",
-      image: "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=800",
-      features: [
-        "Cloud Infrastructure Setup",
-        "Cloud Migration",
-        "DevOps Services",
-        "Cloud Security",
-        "Serverless Computing",
-        "Cloud Consulting"
-      ]
-    },
-    {
-      title: "Enterprise Solutions",
-      description: "Comprehensive business systems",
-      image: "https://images.pexels.com/photos/1181345/pexels-photo-1181345.jpeg?auto=compress&cs=tinysrgb&w=800",
-      features: [
-        "ERP Solutions",
-        "CRM Development",
-        "Business Intelligence",
-        "Custom Software Development",
-        "Legacy System Modernization",
-        "Enterprise Integration"
-      ]
-    }
-  ];
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
 
+  const handleOpenModal = (service: Service) => {
+    setSelectedService(service);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleCloseModal = () => {
+    setSelectedService(null);
+    document.body.style.overflow = 'unset';
+  };
+    
   return (
-    <div>
-      {/* Services Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gray-900 via-black to-[#1e56d6]/20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-[#1e56d6]/20 opacity-20 mix-blend-overlay"></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div className="pt-20">
+      {/* Services Hero Section - Clean, High Contrast */}
+      <section className="relative min-h-[40vh] flex items-center bg-gray-100 dark:bg-gray-950 border-b border-gray-300 dark:border-gray-800 transition-colors duration-500">
+        
+        <div className="relative z-10 max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-left"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              Our Services
+            <p className="text-lg font-semibold uppercase tracking-widest text-[#1e56d6] mb-2">Strategic Solutions</p>
+            <h1 className="text-5xl md:text-7xl font-extrabold dark:text-white text-gray-900 mb-4">
+              Our Service Portfolio
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Comprehensive digital solutions tailored to your business needs
+            <p className="text-xl dark:text-gray-400 text-gray-700 max-w-4xl">
+              From enterprise architecture to specialized professional branding, we offer secure and comprehensive digital services.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
-            {services.map((service, index) => (
+          
+          <div className="text-center mb-16">
+              <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-3">Our Core Expertise</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-400">Services are categorized for clear identification of our primary focus areas.</p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+            {allServices.map((service, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-gradient-to-br from-white/5 to-white/[0.02] rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-500"
+                className="group dark:bg-gray-800 bg-white rounded-xl overflow-hidden shadow-lg dark:shadow-none border border-gray-300 dark:border-gray-700 hover:shadow-2xl hover:border-[#1e56d6] transition-all duration-300 cursor-pointer"
+                onClick={() => handleOpenModal(service)}
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     priority={index === 0}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+                  <span className={`absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full text-white z-20 ${service.tag === 'Personal Strategy' ? 'bg-green-600' : 'bg-[#1e56d6]'}`}>
+                    {service.tag}
+                  </span>
+                  {/* Service Title on Image */}
+                  <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white z-20">{service.title}</h3>
                 </div>
-                <div className="p-8">
-                  <h2 className="text-2xl font-bold text-[#1e56d6] mb-4">{service.title}</h2>
-                  <p className="text-gray-300 mb-6">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-gray-400 group-hover:text-gray-300 transition-colors">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#1e56d6]/70 group-hover:bg-[#1e56d6] mr-3 transition-colors"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="p-6 space-y-4">
+                  <h3 className="sr-only">{service.title}</h3> 
+                  <p className="text-gray-600 dark:text-gray-400">{service.description}</p>
+                  
+                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <button className="text-[#1e56d6] font-semibold flex items-center group-hover:translate-x-1 transition-transform" aria-label={`View details for ${service.title}`}>
+                        View Details 
+                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -151,9 +311,14 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Detailed Service Modal */}
+      <AnimatePresence>
+        {selectedService && <ServiceDetailModal service={selectedService} onClose={handleCloseModal} />}
+      </AnimatePresence>
+
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-[#1e56d6] to-blue-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e56d6]/20 to-blue-900/20 opacity-10 mix-blend-overlay"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -162,17 +327,15 @@ export default function Services() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8">
               Ready to Transform Your Business?
             </h2>
-            <motion.a
+            <Link
               href="/contact"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
               className="inline-block px-8 py-4 bg-white text-[#1e56d6] rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl"
             >
               Schedule Your Free Consultation
-            </motion.a>
+            </Link>
           </motion.div>
         </div>
       </section>

@@ -1,15 +1,26 @@
 import { Metadata } from 'next'
+import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Ripple Nexus',
   description: 'Terms of Service for Ripple Nexus services',
 }
 
+// Utility component for cleaner section headings
+const TermsTitle = ({ number, title }: { number: number, title: string }) => (
+    <h2 className="text-2xl font-extrabold dark:text-white text-gray-900 flex items-center mb-4 pt-4">
+      <span className="w-8 h-8 bg-[#1e56d6] text-white rounded-full flex items-center justify-center text-base font-bold mr-3 flex-shrink-0">{number}</span>
+      {title}
+    </h2>
+);
+
 export default function TermsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b dark:from-gray-900 dark:to-black from-gray-50 to-white transition-colors duration-300">
+    // Added pt-20 for fixed Navbar clearance
+    <div className="min-h-screen pt-20 bg-gradient-to-b dark:from-gray-900 dark:to-black from-gray-50 to-white transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-2xl shadow-2xl border dark:border-gray-800/50 border-gray-200/50 overflow-hidden">
+        <div className="dark:bg-gray-900 bg-white rounded-2xl shadow-2xl border dark:border-gray-800 border-gray-200 overflow-hidden">
+          
           {/* Header */}
           <div className="bg-gradient-to-r from-[#1e56d6] to-blue-600 px-8 md:px-12 py-12">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">Terms of Service</h1>
@@ -21,155 +32,174 @@ export default function TermsPage() {
 
           {/* Content */}
           <div className="px-8 md:px-12 py-12">
-            <div className="prose prose-base dark:prose-invert max-w-none">
-              <div className="space-y-10">
-                {/* Introduction */}
-                <section>
-                  <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed mb-6">
-                    Welcome to Ripple Nexus, a Sole Proprietorship business entity registered under applicable Indian laws with its registered office at:
+            <div className="space-y-12"> {/* Consistent vertical rhythm */}
+              
+              {/* Introduction */}
+              <section className="space-y-4">
+                <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                  Welcome to Ripple Nexus, a <strong>Sole Proprietorship</strong> business entity registered under applicable Indian laws with its registered office at:
+                </p>
+                <div className="dark:bg-gray-800 bg-gray-100 rounded-lg p-4 border-l-4 border-[#1e56d6]">
+                  <div className="dark:text-gray-300 text-gray-700 text-base leading-relaxed">
+                    <p className="flex items-start mb-2">
+                      <span className="text-[#1e56d6] mr-2 flex-shrink-0">📍</span>
+                      A-116, Urbtech Trade Centre, Sector-132, Noida - 201304, Uttar Pradesh, India
+                    </p>
+                    <p className="flex items-center mb-2">
+                      <span className="text-[#1e56d6] mr-2">📧</span>
+                      info@theripplenexus.com
+                    </p>
+                    <p className="flex items-center">
+                      <span className="text-[#1e56d6] mr-2">🌐</span>
+                      https://www.theripplenexus.com
+                    </p>
+                  </div>
+                </div>
+                <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                  These Terms of Service ("Terms") constitute a legally binding agreement between you ("Client", "you", or "your") and Ripple Nexus ("Company", "we", "us", or "our") and govern your access to and use of our services.
+                </p>
+                <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                  By engaging with Ripple Nexus or accessing our website, you agree to be bound by these Terms, our Privacy Policy, and any other agreement expressly incorporated herein.
+                </p>
+              </section>
+
+              {/* Section 1: Definitions */}
+              <section className="space-y-4">
+                <TermsTitle number={1} title="Definitions" />
+                <div className="space-y-3">
+                  <div className="p-3 dark:bg-gray-800 bg-gray-100 rounded-lg">
+                    <p className="dark:text-gray-300 text-gray-700 text-sm">
+                      <strong className="text-[#1e56d6]">Company:</strong> Refers to Ripple Nexus - Sole Proprietorship, including its proprietor, employees, agents, and affiliates.
+                    </p>
+                  </div>
+                  <div className="p-3 dark:bg-gray-800 bg-gray-100 rounded-lg">
+                    <p className="dark:text-gray-300 text-gray-700 text-sm">
+                      <strong className="text-[#1e56d6]">Client:</strong> Any individual or entity engaging Ripple Nexus for services.
+                    </p>
+                  </div>
+                  <div className="p-3 dark:bg-gray-800 bg-gray-100 rounded-lg">
+                    <p className="dark:text-gray-300 text-gray-700 text-sm">
+                      <strong className="text-[#1e56d6]">Services:</strong> All digital services provided by Ripple Nexus, including web development, app/software development, AI chatbot creation, branding, digital marketing, and <strong>Career and Personal Branding</strong> services.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Section 2: Acceptance of Terms */}
+              <section className="space-y-4">
+                <TermsTitle number={2} title="Acceptance of Terms" />
+                <div className="space-y-3">
+                  <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                    By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, you must not use our Services.
                   </p>
-                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800/50 dark:to-gray-700/50 rounded-xl p-6 border-l-4 border-[#1e56d6] mb-6">
-                    <div className="dark:text-gray-300 text-gray-700 text-base leading-relaxed">
-                      <p className="flex items-center mb-2">
-                        <span className="text-[#1e56d6] mr-2">📍</span>
-                        A-116, URBTECH TRADE CENTRE, SECTOR-132, NOIDA - 201304, UTTAR PRADESH, INDIA
-                      </p>
-                      <p className="flex items-center mb-2">
+                  <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                    These Terms may be updated from time to time, and your continued use of the Services constitutes acceptance of the updated Terms.
+                  </p>
+                </div>
+              </section>
+
+              {/* Section 3: Scope of Services */}
+              <section className="space-y-4">
+                <TermsTitle number={3} title="Scope of Services" />
+                <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                  The specific details, deliverables, timelines, and fees for any project or service engagement will be outlined in a separate Statement of Work (SOW) or Service Agreement, which, upon execution, is incorporated by reference into these Terms.
+                </p>
+                
+                <div className="pl-4 border-l-4 border-[#1e56d6] dark:border-[#1e56d6] space-y-4 pt-2">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">3.1 Detailed Service Categories</h3>
+                    <ul className="list-disc pl-6 space-y-2 text-base dark:text-gray-300 text-gray-700">
+                        <li><strong>Core Technology Solutions:</strong> Web Development, Mobile Development, Cloud Infrastructure, DevOps, and Enterprise Systems (ERP/CRM).</li>
+                        <li><strong>Digital Strategy & Design:</strong> UI/UX Design, Digital Marketing, SEO, and Branding services.</li>
+                        <li><strong>Career & Personal Branding:</strong> Resume revision, LinkedIn profile optimization, and cover letter creation.</li>
+                    </ul>
+                </div>
+              </section>
+              
+              {/* Section 4: Client Obligations */}
+              <section className="space-y-4">
+                <TermsTitle number={4} title="Client Obligations" />
+                <ul className="list-disc pl-6 space-y-2 text-base dark:text-gray-300 text-gray-700">
+                  <li>Provide timely feedback and content required for the execution of the Services.</li>
+                  <li>Ensure the accuracy and legality of all data, information, and intellectual property provided to the Company.</li>
+                  <li>Promptly pay all fees and taxes as specified in the SOW.</li>
+                </ul>
+              </section>
+
+              {/* Section 5: Fees, Payments & Taxes */}
+              <section className="space-y-6">
+                <TermsTitle number={5} title="Fees, Payments & Taxes" />
+                <div className="space-y-4">
+                  
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#1e56d6] mb-2">5.1 Invoicing</h3>
+                    <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                      Invoices are raised digitally with service breakdown. Fees must be paid by the due date specified on the invoice.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#1e56d6] mb-2">5.2 Accepted Payment Methods</h3>
+                    <div className="grid gap-3 md:grid-cols-2">
+                      <div className="p-3 dark:bg-gray-800 bg-gray-100 rounded-lg">
+                        <p className="text-sm dark:text-gray-300 text-gray-700">
+                          <strong>Domestic (India):</strong> Bank transfer, UPI, Razorpay
+                        </p>
+                      </div>
+                      <div className="p-3 dark:bg-gray-800 bg-gray-100 rounded-lg">
+                        <p className="text-sm dark:text-gray-300 text-gray-700">
+                          <strong>International:</strong> Outward Remittance(Bank Transfer), PayPal, Stripe, Wise, Pioneer
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#1e56d6] mb-2">5.3 Taxes</h3>
+                    <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                      All taxes, VAT, or duties applicable in the Client's jurisdiction are the responsibility of the Client unless explicitly stated in the SOW.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#1e56d6] mb-2">5.4 Refund Policy</h3>
+                    <ul className="list-disc pl-6 space-y-1 text-base dark:text-gray-300 text-gray-700">
+                      <li>No refunds once services are initiated or delivered.</li>
+                      <li>Partial refunds may be considered at our discretion for unfulfilled scopes due to internal limitations.</li>
+                      <li>Refund requests must be submitted in writing with justification.</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              {/* Section 16: Contact Information */}
+              <section className="space-y-4">
+                <TermsTitle number={16} title="Contact Information" />
+                <div className="space-y-4">
+                  <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
+                    For questions about these Terms, please contact:
+                  </p>
+                  <div className="bg-gradient-to-r from-[#1e56d6]/10 to-blue-600/10 rounded-xl p-4 border border-[#1e56d6]/20 dark:border-[#1e56d6]/30">
+                    <div className="space-y-2 dark:text-gray-300 text-gray-700 text-base">
+                      <p className="font-semibold text-gray-900 dark:text-white">Ripple Nexus - Legal Contact</p>
+                      
+                      <p className="flex items-center">
                         <span className="text-[#1e56d6] mr-2">📧</span>
-                        info@theripplenexus.com
+                        <strong>Email:</strong> <span className="ml-2">info@theripplenexus.com</span>
+                      </p>
+                      
+                      <p className="flex items-start">
+                        <span className="text-[#1e56d6] mr-2 mt-1">🏢</span>
+                        <span><strong>Registered Office:</strong> A-116, Urbtech Trade Centre, Sector-132, Noida - 201304, Uttar Pradesh, India</span>
                       </p>
                       <p className="flex items-center">
                         <span className="text-[#1e56d6] mr-2">🌐</span>
-                        https://www.theripplenexus.com
+                        <strong>Website:</strong> <span className="ml-2">https://www.theripplenexus.com</span>
                       </p>
                     </div>
                   </div>
-                  <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed mb-4">
-                    These Terms of Service ("Terms") constitute a legally binding agreement between you ("Client", "you", or "your") and Ripple Nexus ("Company", "we", "us", or "our") and govern your access to and use of our services.
-                  </p>
-                  <p className="text-base dark:text-gray-300 text-gray-700 leading-relaxed">
-                    By engaging with Ripple Nexus or accessing our website, you agree to be bound by these Terms, our Privacy Policy, and any other agreement expressly incorporated herein.
-                  </p>
-                </section>
-
-                {/* Section 1 */}
-                <section>
-                  <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center">
-                    <span className="w-7 h-7 bg-[#1e56d6] text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">1</span>
-                    Definitions
-                  </h2>
-                  <div className="space-y-3 ml-10">
-                    <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-                      <p className="dark:text-gray-300 text-gray-700 text-sm">
-                        <strong className="text-[#1e56d6]">Company:</strong> Refers to Ripple Nexus - Sole Proprietorship, including its proprietor, employees, agents, and affiliates.
-                      </p>
-                    </div>
-                    <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-                      <p className="dark:text-gray-300 text-gray-700 text-sm">
-                        <strong className="text-[#1e56d6]">Client:</strong> Any individual or entity engaging Ripple Nexus for services.
-                      </p>
-                    </div>
-                    <div className="p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg">
-                      <p className="dark:text-gray-300 text-gray-700 text-sm">
-                        <strong className="text-[#1e56d6]">Services:</strong> All digital services provided by Ripple Nexus, including web development, app/software development, AI chatbot creation, branding, and digital marketing (excluding career booster services).
-                      </p>
-                    </div>
-                  </div>
-                </section>
-
-                {/* Section 2 */}
-                <section>
-                  <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center">
-                    <span className="w-7 h-7 bg-[#1e56d6] text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">2</span>
-                    Acceptance of Terms
-                  </h2>
-                  <div className="ml-10 space-y-3">
-                    <p className="text-sm dark:text-gray-300 text-gray-700 leading-relaxed">
-                      By accessing or using our Services, you agree to be bound by these Terms. If you do not agree to these Terms, you must not use our Services.
-                    </p>
-                    <p className="text-sm dark:text-gray-300 text-gray-700 leading-relaxed">
-                      These Terms may be updated from time to time, and your continued use of the Services constitutes acceptance of the updated Terms.
-                    </p>
-                  </div>
-                </section>
-
-                {/* Section 5 - Payment Methods */}
-                <section>
-                  <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center">
-                    <span className="w-7 h-7 bg-[#1e56d6] text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">5</span>
-                    Fees, Payments & Taxes
-                  </h2>
-                  <div className="ml-10 space-y-4">
-                    <div>
-                      <h3 className="text-lg font-semibold text-[#1e56d6] mb-2">5.1 Invoicing</h3>
-                      <p className="text-sm dark:text-gray-300 text-gray-700 leading-relaxed mb-3">
-                        Invoices are raised digitally with service breakdown. Fees must be paid by the due date.
-                      </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-lg font-semibold text-[#1e56d6] mb-2">5.2 Accepted Payment Methods</h3>
-                      <div className="grid gap-3 md:grid-cols-2">
-                        <div className="p-3 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-800/50 dark:to-gray-700/50 rounded-lg">
-                          <p className="text-sm dark:text-gray-300 text-gray-700">
-                            <strong>Domestic (India):</strong> Bank transfer, UPI, Razorpay
-                          </p>
-                        </div>
-                        <div className="p-3 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800/50 dark:to-gray-700/50 rounded-lg">
-                          <p className="text-sm dark:text-gray-300 text-gray-700">
-                            <strong>International:</strong> Outward Remittance(Bank Transfer), PayPal, Stripe, Wise, Pioneer
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div>
-                      <h3 className="text-lg font-semibold text-[#1e56d6] mb-2">5.3 Taxes</h3>
-                      <p className="text-sm dark:text-gray-300 text-gray-700 leading-relaxed mb-3">
-                        All taxes, VAT, or duties applicable in the Client's jurisdiction are the responsibility of the Client unless explicitly stated.
-                      </p>
-                    </div>
-
-                    <div>
-                      <h3 className="text-lg font-semibold text-[#1e56d6] mb-2">5.4 Refund Policy</h3>
-                      <ul className="list-disc pl-5 space-y-1 text-sm dark:text-gray-300 text-gray-700">
-                        <li>No refunds once services are initiated or delivered</li>
-                        <li>Partial refunds may be considered at our discretion for unfulfilled scopes due to internal limitations</li>
-                        <li>Refund requests must be submitted in writing with justification</li>
-                      </ul>
-                    </div>
-                  </div>
-                </section>
-
-                {/* Contact Section */}
-                <section>
-                  <h2 className="text-xl font-bold dark:text-white text-gray-900 mb-4 flex items-center">
-                    <span className="w-7 h-7 bg-[#1e56d6] text-white rounded-full flex items-center justify-center text-sm font-bold mr-3">16</span>
-                    Contact Information
-                  </h2>
-                  <div className="ml-10">
-                    <div className="bg-gradient-to-r from-[#1e56d6]/10 to-blue-600/10 rounded-xl p-4 border border-[#1e56d6]/20">
-                      <p className="text-sm dark:text-gray-300 text-gray-700 leading-relaxed mb-3">
-                        For questions about these Terms, please contact:
-                      </p>
-                      <div className="space-y-2 dark:text-gray-300 text-gray-700 text-sm">
-                        <p className="flex items-center">
-                          <span className="text-[#1e56d6] mr-2">📧</span>
-                          <strong>Email:</strong> <span className="ml-2">info@theripplenexus.com</span>
-                        </p>
-                        <p className="flex items-start">
-                          <span className="text-[#1e56d6] mr-2 mt-1">🏢</span>
-                          <span><strong>Registered Office:</strong> A-116, URBTECH TRADE CENTRE, SECTOR-132, NOIDA - 201304, UTTAR PRADESH, INDIA</span>
-                        </p>
-                        <p className="flex items-center">
-                          <span className="text-[#1e56d6] mr-2">🌐</span>
-                          <strong>Website:</strong> <span className="ml-2">https://www.theripplenexus.com</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </div>
+                </div>
+              </section>
+              
             </div>
           </div>
         </div>

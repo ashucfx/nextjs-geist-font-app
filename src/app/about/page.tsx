@@ -1,170 +1,141 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import React from 'react';
+
+// --- Icons for Core Principles (Using SVG paths for stability) ---
+const InnovationIcon = () => (<svg className="w-8 h-8 text-[#1e56d6] dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>);
+const ExcellenceIcon = () => (<svg className="w-8 h-8 text-[#1e56d6] dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>);
+const IntegrityIcon = () => (<svg className="w-8 h-8 text-[#1e56d6] dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a3 3 0 003-3V6a3 3 0 00-3-3H6a3 3 0 00-3 3v12a3 3 0 003 3z" /></svg>);
+const StrategyIcon = () => (<svg className="w-8 h-8 text-[#1e56d6] dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m6-12h2a2 2 0 012 2v10m-8-2h8m-12-4h12m-2-4h2a2 2 0 002-2V4a2 2 0 00-2-2h-2m-8 2h-2a2 2 0 00-2 2v4a2 2 0 002 2h2" /></svg>);
 
 export default function About() {
+    
+  const corePrinciples = [
+    {
+      title: "Innovation & Foresight",
+      description: "We don't just follow trends; we pioneer solutions that define the next generation of digital infrastructure.",
+      icon: <InnovationIcon />
+    },
+    {
+      title: "Security & Integrity",
+      description: "Our foundation is trust. We uphold rigorous compliance and security standards in every enterprise solution.",
+      icon: <IntegrityIcon />
+    },
+    {
+      title: "Execution Excellence",
+      description: "From strategy ideation to flawless deployment, we ensure precision, quality, and measurable impact.",
+      icon: <ExcellenceIcon />
+    },
+    {
+      title: "Strategic Partnership",
+      description: "We embed ourselves as a long-term strategic partner, focusing on your sustainable growth, not just project completion.",
+      icon: <StrategyIcon />
+    }
+  ];
+
   return (
-    <div>
-      {/* About Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-gray-900 via-black to-[#1e56d6]/20">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-[#1e56d6]/20 opacity-20 mix-blend-overlay"></div>
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+    <div className="pt-20">
+      {/* About Hero Section - Clean, High Contrast */}
+      <section className="relative min-h-[40vh] flex items-center bg-gray-100 dark:bg-gray-950 border-b border-gray-300 dark:border-gray-800 transition-colors duration-500">
+        
+        <div className="relative z-10 max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-left"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              About Us
+            <p className="text-lg font-semibold uppercase tracking-widest text-[#1e56d6] mb-2">Our Mission, Vision, and Values</p>
+            <h1 className="text-5xl md:text-7xl font-extrabold dark:text-white text-gray-900 mb-4">
+              The Authority Statement
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Build Bold. Scale Smart. Bridging Ideas to Impact — At the Nexus of Innovation.
-            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Vision Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
+      {/* Vision & Mission Section */}
+      <section className="py-24 dark:bg-gray-900 bg-white transition-colors duration-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            {/* Vision Content */}
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="space-y-6"
+            >
+                <h2 className="text-4xl font-extrabold text-[#1e56d6] dark:text-white mb-4">Our Vision</h2>
+                <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+                    At <strong>Ripple Nexus</strong>, we envision a future where complex <strong>digital governance</strong> and large-scale <strong>enterprise solutions</strong> are seamlessly merged into intuitive, compliant, and scalable ecosystems. We strive to be the <strong>convergence point</strong> where bold vision meets technical certainty.
+                </p>
+                <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                    Our focus is on building robust architectures that stand up to the most rigorous security and performance demands of public and private sector clients. We deliver technology as a strategic asset, not just a service.
+                </p>
+            </motion.div>
+
+            {/* Ethos/Identity Content */}
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="space-y-6"
+            >
+                <h2 className="text-4xl font-extrabold text-[#1e56d6] dark:text-white mb-4">Our Ethos</h2>
+                <p className="text-xl leading-relaxed text-gray-700 dark:text-gray-300">
+                    The name <strong>Ripple Nexus</strong> is our commitment: <strong>Ripple</strong> symbolizes the power of strategic innovation to create waves of measurable impact, and <strong>Nexus</strong> represents the convergence of specialized talent and technology.
+                </p>
+                <p className="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                    As a digital-first, agile sole proprietorship, we maintain maximum focus and accountability, ensuring direct access to senior expertise for every engagement. We are dedicated to transparent processes and audited results.
+                </p>
+            </motion.div>
+
+        </div>
+      </section>
+
+      {/* Core Principles/Values Section (Improved Icon-based Grid) */}
+      <section className="py-24 bg-gray-100 dark:bg-gray-950 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:text-center mb-16"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-[#1e56d6] mb-6">
-              Company Vision
+            <p className="text-xl font-medium text-gray-500 dark:text-gray-400 mb-2">The Pillars of Our Work</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white">
+              Our Foundational Principles
             </h2>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="prose prose-lg mx-auto text-gray-300 space-y-6"
-          >
-            <p className="text-xl leading-relaxed">
-              At Ripple Nexus, we envision a world where technology is not just built — it evolves, expands, and elevates.
-            </p>
-            <p className="text-xl leading-relaxed">
-              Our name is our mission: "Ripple" symbolizes the power of a single innovation to create waves of impact, and "Nexus" is the convergence point where bold ideas, smart technology, and meaningful strategy unite. Together, Ripple Nexus stands for extraordinary transformation born at the intersection of purpose and possibility.
-            </p>
-            <p className="text-xl leading-relaxed">
-              As a Sole Proprietorship business, we aim to be the silent force behind the world's most intuitive digital platforms, intelligent applications, and scalable cloud-based ecosystems.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-20 bg-[#1e56d6]/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-6">Our Values</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Innovation",
-                description: "Pioneering solutions that shape the digital future"
-              },
-              {
-                title: "Excellence",
-                description: "Delivering precision and quality in every project"
-              },
-              {
-                title: "Impact",
-                description: "Creating meaningful change through technology"
-              }
-            ].map((value, index) => (
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {corePrinciples.map((principle, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="group bg-gradient-to-br from-white/5 to-white/[0.02] p-8 rounded-xl hover:bg-white/10 transition-all duration-500"
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                className="group dark:bg-gray-800 bg-white p-8 rounded-xl shadow-lg dark:shadow-none border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-[#1e56d6]/50 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-[#1e56d6] text-white rounded-lg flex items-center justify-center text-xl font-bold mb-6">
-                  {index + 1}
-                </div>
-                <h3 className="text-2xl font-bold text-[#1e56d6] mb-4">{value.title}</h3>
-                <p className="text-gray-300">{value.description}</p>
+                <div className="mb-6">{principle.icon}</div>
+                <h3 className="text-2xl font-extrabold text-gray-900 dark:text-white mb-3 transition-colors group-hover:text-[#1e56d6]">
+                  {principle.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 text-base">
+                  {principle.description}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Our Values Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-[#1e56d6] mb-6">
-              Our Values
-            </h2>
-          </motion.div>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-            {[
-              {
-                title: "Quality Excellence",
-                description: "Delivering exceptional quality through rigorous testing and best practices in software development"
-              },
-              {
-                title: "Client Trust",
-                description: "Ripple Nexus - Your trusted technology partner committed to your success"
-              }
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="group bg-gradient-to-br from-white/5 to-white/[0.02] p-8 rounded-xl hover:bg-white/10 transition-all duration-500"
-              >
-                <div className="text-center">
-                  <div className="w-16 h-16 mx-auto mb-6">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-full h-full text-[#1e56d6]">
-                      {index === 0 ? (
-                        <>
-                          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                          <path d="M8 12l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </>
-                      ) : (
-                        <path d="M12 2L15 8L21 9L17 14L18 20L12 17L6 20L7 14L3 9L9 8L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      )}
-                    </svg>
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#1e56d6] mb-4">{value.title}</h3>
-                  <p className="text-gray-300">{value.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
+      {/* CTA Section - Consistent Styling */}
       <section className="py-20 bg-gradient-to-br from-[#1e56d6] to-blue-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1e56d6]/20 to-blue-900/20 opacity-10 mix-blend-overlay"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -173,17 +144,15 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
-              Ready to start your journey?
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8">
+              Verify Our Capabilities. Start a Dialogue.
             </h2>
-            <motion.a
+            <a
               href="/contact"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
               className="inline-block px-8 py-4 bg-white text-[#1e56d6] rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl"
             >
               Schedule Your Free Consultation
-            </motion.a>
+            </a>
           </motion.div>
         </div>
       </section>

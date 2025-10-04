@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from 'react';
+import React from 'react'; // Explicit import for React
 
 type Theme = 'dark' | 'light';
 
@@ -11,6 +12,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+// Named export for use in layout.tsx
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
@@ -45,6 +47,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Named export for use in ThemeToggle.tsx
 export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
@@ -53,19 +56,27 @@ export function useTheme() {
   return context;
 }
 
-// Script to prevent flash of wrong theme
-const themeScript = `
+// Script content to prevent flash of wrong theme (FOUC)
+const themeScriptContent = `
   (function() {
-    const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    document.documentElement.classList.toggle('dark', theme === 'dark');
+    try {
+      const storedTheme = localStorage.getItem('theme');
+      const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      const theme = storedTheme || systemPreference;
+      
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+    } catch (e) {
+      // Safely ignore storage access errors
+    }
   })();
 `;
 
+// Named export for use in layout.tsx
 export function ThemeScript() {
   return (
     <script
       dangerouslySetInnerHTML={{
-        __html: themeScript,
+        __html: themeScriptContent,
       }}
     />
   );

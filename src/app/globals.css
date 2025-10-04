@@ -13,6 +13,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
+  /* Using your brand blue: #1e56d6 */
   background: rgba(30, 86, 214, 0.3);
   border-radius: 2px;
   transition: all 0.3s;
@@ -22,40 +23,31 @@
   background: rgba(30, 86, 214, 0.5);
 }
 
-/* Theme Transitions */
+/* --- FIXES START HERE --- */
+
+/* 1. Theme Transitions: Define the properties for theme transitions */
 .transition-theme {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* Light Mode Overrides */
-:root:not(.dark) section[class*="from-gray-900"],
-:root:not(.dark) section[class*="to-gray-900"],
-:root:not(.dark) section[class*="from-black"],
-:root:not(.dark) section[class*="to-black"] {
-  background: linear-gradient(to bottom, #f8fafc, #ffffff);
-  color: #1a1a1a;
-}
+/* 2. Remove conflicting Light Mode Text Overrides */
+/* The problematic rules below are removed to allow component-level dark mode classes to function correctly:
+   - :root:not(.dark) .text-gray-300 { color: #4b5563; }
+   - :root:not(.dark) :not(button):not(a).text-white { color: #1a1a1a; }
+   - :root:not(.dark) section[class*="from-gray-900"], etc.
+*/
 
-:root:not(.dark) .bg-white\/5 {
-  background-color: rgba(255, 255, 255, 0.9);
-}
-
-:root:not(.dark) .text-gray-300 {
-  color: #4b5563;
-}
-:root:not(.dark) :not(button):not(a).text-white {
-  color: #1a1a1a;
-}
-
-:root:not(.dark) .border-white\/5 {
-  border-color: #e5e7eb;
-}
-
-/* Apply transitions to all sections */
-section, footer, nav, header, main, div {
+/* 3. Apply transitions to structural tags using @apply for Tailwind compatibility */
+section, footer, nav, header, main {
   @apply transition-theme;
 }
 
+/* Optional: Apply transitions to inner divs, though careful application on structural tags is usually enough */
+div {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Helper Class (Kept, if still needed for specific buttons) */
 .btn-white-text {
   color: #ffffff !important;
 }
