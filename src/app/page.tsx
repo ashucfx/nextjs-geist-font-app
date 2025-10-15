@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-// --- 1. Define TypeScript Props and Data ---
 interface Solution {
   title: string;
   description: string;
@@ -35,7 +34,6 @@ const solutions: Solution[] = [
 ];
 
 
-// --- 2. Dedicated Solution Card Component ---
 const SolutionCard: React.FC<{ solution: Solution, index: number }> = ({ solution, index }) => {
   return (
     <motion.div
@@ -43,8 +41,8 @@ const SolutionCard: React.FC<{ solution: Solution, index: number }> = ({ solutio
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.6, delay: index * 0.15 }}
-      className="group relative bg-white/70 dark:bg-gray-800/80 backdrop-blur-md rounded-xl overflow-hidden
-                 hover:shadow-2xl transition-all duration-500 shadow-xl dark:shadow-2xl dark:shadow-blue-900/10 border dark:border-blue-700/30 border-gray-200"
+      className="group relative bg-gray-800/80 backdrop-blur-md rounded-xl overflow-hidden
+                  hover:shadow-2xl transition-all duration-500 shadow-xl shadow-blue-900/10 border border-[#1e56d6]/30"
     >
       <div className="relative h-56">
         <Image
@@ -55,21 +53,20 @@ const SolutionCard: React.FC<{ solution: Solution, index: number }> = ({ solutio
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority={index === 0}
         />
-        {/* Overlay is dark/90 to ensure white text pops */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
         <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white z-10">{solution.title}</h3>
       </div>
       <div className="relative p-6">
-        <p className="dark:text-gray-300 text-gray-700 mb-6 text-base leading-relaxed">{solution.description}</p>
+        <p className="text-gray-300 mb-6 text-base leading-relaxed">{solution.description}</p>
         <ul className="space-y-3">
           {solution.features.map((feature, i) => (
-            <li key={i} className="dark:text-gray-200 text-gray-800 flex items-center font-medium text-sm">
+            <li key={i} className="text-gray-200 flex items-center font-medium text-sm">
               <svg className="w-4 h-4 text-[#1e56d6] mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
               {feature}
             </li>
           ))}
         </ul>
-        <Link href="/services" className="mt-6 inline-block text-[#1e56d6] hover:text-blue-700 font-semibold transition-colors">
+        <Link href="/services" className="mt-6 inline-block text-[#1e56d6] hover:text-blue-500 font-semibold transition-colors">
           Learn More &rarr;
         </Link>
       </div>
@@ -78,7 +75,6 @@ const SolutionCard: React.FC<{ solution: Solution, index: number }> = ({ solutio
 };
 
 
-// --- 3. Main Home Component ---
 export default function Home() {
   const stats = [
     { number: "100+", label: "Successful Engagements" },
@@ -89,11 +85,9 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden">
-      {/* --- HERO SECTION (CLEAN, NO IMAGE, DEFAULT BACKGROUND) --- */}
-      <section className="min-h-[90vh] flex flex-col justify-center items-center transition-colors duration-500 border-b dark:border-gray-800 border-gray-200">
+      <section className="min-h-[90vh] flex flex-col justify-center items-center transition-colors duration-500 border-b border-gray-800 
+                          bg-gradient-to-br from-gray-950 to-gray-900"> 
         
-        {/* Removed Image, Overlay, and background color overrides */}
-
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -102,7 +96,6 @@ export default function Home() {
             className="text-center"
           >
 
-            {/* Logo/Name */}
             <div className="mb-8 flex flex-col items-center">
               <div className="relative w-20 h-20 mb-6"> 
                 <Image
@@ -116,26 +109,20 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Authority-focused Headline - Uses theme colors (dark:text-white / text-gray-900) */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold dark:text-white text-gray-900 mb-6 leading-tight tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
               Bridging Secure Technology to <br />
               <span className="bg-gradient-to-r from-[#1e56d6] to-blue-600 bg-clip-text text-transparent">
                 Enterprise Impact
               </span>
             </h1>
 
-            {/* Authoritative Subheading - Uses theme colors (dark:text-gray-300 / text-gray-600) */}
-            <p className="text-xl md:text-2xl dark:text-gray-300 text-gray-600 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
-              We deliver <strong>auditable, compliant, and scalable digital transformation</strong> solutions for organizations requiring stability and growth.
+            <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
+              We deliver **auditable, compliant, and scalable digital transformation** solutions for organizations requiring stability and growth.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6">
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-block"
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="inline-block">
                 <Link
                   href="/contact"
                   className="group relative px-10 py-4 bg-[#1e56d6] text-white rounded-lg text-lg font-semibold overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 block h-full"
@@ -145,14 +132,10 @@ export default function Home() {
                 </Link>
               </motion.div>
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-block"
-              >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="inline-block">
                 <Link
                   href="/about"
-                  className="px-10 py-4 dark:bg-gray-800/60 bg-white/70 dark:text-gray-200 text-gray-800 rounded-lg text-lg font-medium backdrop-blur-sm hover:bg-white/90 dark:hover:bg-gray-700/80 transition-all duration-300 border border-gray-300 dark:border-gray-700 shadow-md block h-full"
+                  className="px-10 py-4 bg-gray-800/60 text-gray-200 rounded-lg text-lg font-medium backdrop-blur-sm hover:bg-gray-700/80 transition-all duration-300 border border-gray-700 shadow-md block h-full"
                 >
                   Read Our Authority Statement
                 </Link>
@@ -160,13 +143,12 @@ export default function Home() {
 
             </div>
             
-            {/* Scroll Indicator (Positioned under buttons) */}
             <div className="pt-20">
               <Link
                 href="#solutions"
-                className="dark:text-white/80 text-gray-600/80 text-center cursor-pointer hover:dark:text-white hover:text-gray-900 transition-colors group"
+                className="text-white/80 text-center cursor-pointer hover:text-white transition-colors group"
               >
-                <p className="text-sm font-medium mb-1 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">Our Core Services</p>
+                <p className="text-sm font-medium mb-1 group-hover:text-white transition-colors">Our Core Services</p>
                 <motion.svg
                   className="w-6 h-6 mx-auto"
                   fill="none"
@@ -183,10 +165,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      {/* --- END HERO SECTION (CLEAN) --- */}
 
-      {/* Solutions Section */}
-      <section id="solutions" className="py-24 bg-gradient-to-b dark:from-gray-950 dark:to-gray-900 from-gray-100 to-white transition-colors duration-500">
+      <section id="solutions" className="py-24 bg-gradient-to-br from-gray-900 to-[#1e56d6]/10 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -195,10 +175,10 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold dark:text-white text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Core Competencies for Digital Governance
             </h2>
-            <p className="text-xl dark:text-gray-400 text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               End-to-end digital transformation services tailored to your organizational mandate and strategic goals.
             </p>
           </motion.div>
@@ -211,8 +191,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us (Stats Section) */}
-      <section className="py-24 bg-gradient-to-br from-blue-50/50 to-indigo-100/30 dark:bg-gray-900/90 transition-colors duration-500 border-t border-b dark:border-gray-800 border-gray-200">
+      <section className="py-24 bg-gradient-to-r from-gray-950/90 to-gray-800/90 transition-colors duration-500 border-t border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -221,10 +200,10 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold dark:text-white text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Our Track Record and Commitment
             </h2>
-            <p className="text-xl dark:text-gray-400 text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Verified metrics that establish trust and our dedication to your long-term success.
             </p>
           </motion.div>
@@ -237,11 +216,11 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-md p-8 rounded-xl text-center
-                           hover:bg-white/90 dark:hover:bg-gray-700/80 transition-all duration-300 shadow-lg dark:shadow-xl dark:shadow-blue-900/10 border border-gray-300 dark:border-gray-700/50"
+                className="bg-gray-800/70 backdrop-blur-md p-8 rounded-xl text-center
+                            hover:bg-gray-700/80 transition-all duration-300 shadow-lg shadow-blue-900/10 border border-gray-700/50"
               >
                 <div className="text-4xl md:text-5xl font-extrabold text-[#1e56d6] mb-2">{stat.number}</div>
-                <div className="text-lg dark:text-gray-300 text-gray-700 font-semibold">{stat.label}</div>
+                <div className="text-lg text-gray-300 font-semibold">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -249,7 +228,6 @@ export default function Home() {
       </section>
 
 
-      {/* CTA Section: High-impact, clear call-to-action */}
       <section className="py-28 bg-gradient-to-br from-[#1e56d6] to-blue-800 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 mix-blend-overlay" style={{ backgroundImage: 'url("/images/tech-pattern.svg")' }}></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

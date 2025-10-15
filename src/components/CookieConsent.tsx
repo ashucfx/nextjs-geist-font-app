@@ -5,7 +5,7 @@ import CookieConsent from 'react-cookie-consent';
 
 export default function RippleNexusCookieBanner() {
   const handleAccept = () => {
-    ReactGA.initialize('YOUR_GA_TRACKING_ID'); // Replace with actual GA ID
+    ReactGA.initialize('G-4FJL8SG1W9');
     ReactGA.pageview(window.location.pathname + window.location.search);
   };
 

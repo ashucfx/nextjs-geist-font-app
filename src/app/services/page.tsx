@@ -6,9 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-// --- Interface for detailed Service Data (FIXED: Added optional 'id' property) ---
 interface Service {
-  id?: number; // <-- FIX: Added optional id for service tracking
+  id?: number; 
   title: string;
   description: string;
   image: string;
@@ -17,7 +16,6 @@ interface Service {
   tag: string; 
 }
 
-// --- Synthesized Data with Final Content Fix ---
 const allServices: Service[] = [
   {
     title: "Enterprise Web Development",
@@ -139,10 +137,9 @@ const allServices: Service[] = [
     description: "Optimize your personal brand for career advancement.",
     image: "https://images.pexels.com/photos/5989925/pexels-photo-5989925.jpeg",
     tag: "Personal Strategy",
-    // CONTENT FIX: Removed markdown stars and used <strong> tag
     details: (
       <>
-        Leverage our strategic expertise to present your professional journey with maximum impact. We help position you for career advancement, assisting both <strong>Executive and Mid-Career professionals</strong> through expert digital and document optimization.
+        Leverage our strategic expertise to present your professional journey with maximum impact. We help position you for career advancement, assisting both **Executive and Mid-Career professionals** through expert digital and document optimization.
       </>
     ),
     features: [
@@ -157,7 +154,6 @@ const allServices: Service[] = [
 ];
 
 
-// --- MODAL Component for Detailed View (Unchanged logic, uses new styles) ---
 const ServiceDetailModal: React.FC<{ service: Service, onClose: () => void }> = ({ service, onClose }) => {
     return (
         <motion.div
@@ -172,12 +168,12 @@ const ServiceDetailModal: React.FC<{ service: Service, onClose: () => void }> = 
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 50, opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="relative max-w-3xl mx-auto dark:bg-gray-800 bg-white rounded-xl shadow-2xl cursor-default my-8"
+                className="relative max-w-3xl mx-auto bg-gray-800 rounded-xl shadow-2xl cursor-default my-8"
                 onClick={(e) => e.stopPropagation()}
             >
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 dark:text-white text-gray-900 hover:text-[#1e56d6] transition-colors z-50 p-2 rounded-full dark:bg-gray-700/50 bg-gray-100/50"
+                    className="absolute top-4 right-4 text-white hover:text-[#1e56d6] transition-colors z-50 p-2 rounded-full bg-gray-700/50"
                     aria-label="Close service details"
                 >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -191,13 +187,13 @@ const ServiceDetailModal: React.FC<{ service: Service, onClose: () => void }> = 
                 </div>
 
                 <div className="p-6 space-y-6">
-                    <p className="text-lg font-medium text-gray-700 dark:text-gray-300">{service.details}</p> 
+                    <p className="text-lg font-medium text-gray-300">{service.details}</p> 
                     
-                    <div className="border-t pt-4 dark:border-gray-700 border-gray-300">
+                    <div className="border-t pt-4 border-gray-700">
                         <h3 className="text-2xl font-bold text-[#1e56d6] mb-4">What's Included</h3>
                         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
                             {service.features.map((feature, i) => (
-                                <li key={i} className="flex items-center text-gray-700 dark:text-gray-300">
+                                <li key={i} className="flex items-center text-gray-300">
                                     <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
                                     {feature}
                                 </li>
@@ -211,7 +207,7 @@ const ServiceDetailModal: React.FC<{ service: Service, onClose: () => void }> = 
                           onClick={onClose} 
                           className="inline-block px-8 py-3 bg-[#1e56d6] text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
                         >
-                          Inquire About This Service
+                            Inquire About This Service
                         </Link>
                     </div>
                 </div>
@@ -221,7 +217,6 @@ const ServiceDetailModal: React.FC<{ service: Service, onClose: () => void }> = 
 };
 
 
-// --- Main Page Component ---
 export default function Services() {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
@@ -237,8 +232,7 @@ export default function Services() {
     
   return (
     <div className="pt-20">
-      {/* Services Hero Section - Clean, High Contrast */}
-      <section className="relative min-h-[40vh] flex items-center bg-gray-100 dark:bg-gray-950 border-b border-gray-300 dark:border-gray-800 transition-colors duration-500">
+      <section className="relative min-h-[40vh] flex items-center bg-gradient-to-br from-gray-950 to-gray-900 border-b border-gray-800 transition-colors duration-500">
         
         <div className="relative z-10 max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 w-full">
           <motion.div
@@ -248,23 +242,22 @@ export default function Services() {
             className="text-left"
           >
             <p className="text-lg font-semibold uppercase tracking-widest text-[#1e56d6] mb-2">Strategic Solutions</p>
-            <h1 className="text-5xl md:text-7xl font-extrabold dark:text-white text-gray-900 mb-4">
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4">
               Our Service Portfolio
             </h1>
-            <p className="text-xl dark:text-gray-400 text-gray-700 max-w-4xl">
+            <p className="text-xl text-gray-400 max-w-4xl">
               From enterprise architecture to specialized professional branding, we offer secure and comprehensive digital services.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid Section */}
-      <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-500">
+      <section className="py-24 bg-gray-900 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center mb-16">
-              <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-3">Our Core Expertise</h2>
-              <p className="text-xl text-gray-600 dark:text-gray-400">Services are categorized for clear identification of our primary focus areas.</p>
+            <h2 className="text-4xl font-extrabold text-white mb-3">Our Core Expertise</h2>
+            <p className="text-xl text-gray-400">Services are categorized for clear identification of our primary focus areas.</p>
           </div>
 
           <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
@@ -275,7 +268,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group dark:bg-gray-800 bg-white rounded-xl overflow-hidden shadow-lg dark:shadow-none border border-gray-300 dark:border-gray-700 hover:shadow-2xl hover:border-[#1e56d6] transition-all duration-300 cursor-pointer"
+                className="group bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:shadow-2xl hover:border-[#1e56d6] transition-all duration-300 cursor-pointer"
                 onClick={() => handleOpenModal(service)}
               >
                 <div className="relative h-48 overflow-hidden">
@@ -291,14 +284,13 @@ export default function Services() {
                   <span className={`absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full text-white z-20 ${service.tag === 'Personal Strategy' ? 'bg-green-600' : 'bg-[#1e56d6]'}`}>
                     {service.tag}
                   </span>
-                  {/* Service Title on Image */}
                   <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white z-20">{service.title}</h3>
                 </div>
                 <div className="p-6 space-y-4">
                   <h3 className="sr-only">{service.title}</h3> 
-                  <p className="text-gray-600 dark:text-gray-400">{service.description}</p>
+                  <p className="text-gray-400">{service.description}</p>
                   
-                  <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <div className="pt-4 border-t border-gray-700">
                     <button className="text-[#1e56d6] font-semibold flex items-center group-hover:translate-x-1 transition-transform" aria-label={`View details for ${service.title}`}>
                         View Details 
                         <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
@@ -311,13 +303,11 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Detailed Service Modal */}
       <AnimatePresence>
         {selectedService && <ServiceDetailModal service={selectedService} onClose={handleCloseModal} />}
       </AnimatePresence>
 
 
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-[#1e56d6] to-blue-900 relative overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
