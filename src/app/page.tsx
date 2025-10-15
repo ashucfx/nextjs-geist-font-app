@@ -116,9 +116,9 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
-              We deliver **auditable, compliant, and scalable digital transformation** solutions for organizations requiring stability and growth.
-            </p>
+<p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
+  We deliver <strong className="font-extrabold">auditable, compliant, and scalable digital transformation</strong> solutions for organizations requiring stability and growth.
+</p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6">
 
