@@ -21,8 +21,7 @@ export default function Footer() {
     { href: '/casestudies?category=Enterprise%20Solutions', label: 'Cloud Governance & DevOps' },
     { href: '/casestudies?category=App%20Development', label: 'App Development' },
     { href: '/casestudies?category=UI/UX', label: 'UX/UI Engineering' },
-    { href: '/casestudies?category=Enterprise%20Solutions', label: 'Enterprise Systems' },
-    { href: '/casestudies?category=Professional%20&%20Career%20Branding', label: 'Career & Professional Branding' },
+    { href: '/casestudies?category=Professional+%26+Career+Branding&+Career+Branding=', label: 'Career & Professional Branding' },
   ];
   
   const socialLinks = [
@@ -101,7 +100,7 @@ export default function Footer() {
               <h3 className="text-xl font-bold text-gray-200 border-b border-gray-700 pb-2">Our Location</h3>
               <div className="w-full h-48 md:w-full md:h-64 rounded-xl overflow-hidden shadow-xl shadow-blue-900/20 border-2 border-[#1e56d6]/40">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14027.674972304892!2d77.3822171!3d28.4878347!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cd9f5ffffffff%3A0x6764560d2d3a3390!2sUrbtech%20Trade%20Centre!5e0!3m2!1sen!2sin!4v1699747200000!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.928086071705!2d77.3754128749523!3d28.51181128955354!2m3!1f0!2f0!0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce72d5d23fd2d%3A0xccad56c7a364950a!2sRipple%20Nexus!5e0!3m2!1sen!2sin!4v1760524957424!5m2!1sen!2sin" 
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
