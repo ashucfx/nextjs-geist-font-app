@@ -14,9 +14,9 @@ const NavbarCTA: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
   >
     <Link
       href="/contact"
-      className="px-6 py-2.5 bg-gradient-to-r from-[#1e56d6] to-blue-600 
-                text-white rounded-lg hover:from-blue-600 hover:to-[#1e56d6] 
-                transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-[#1e56d6]/40 
+      className="px-6 py-2.5 bg-gradient-to-r from-primary-500 via-primary-400 to-accent-500
+                text-white rounded-xl hover:from-primary-600 hover:via-primary-500 hover:to-accent-600
+                transition-all duration-300 shadow-[0_12px_30px_rgba(31,86,212,0.28)] hover:shadow-[0_20px_40px_rgba(31,86,212,0.38)]
                 font-semibold text-sm tracking-wide transform"
       onClick={onClick}
     >
@@ -75,7 +75,7 @@ export default function Navbar() {
         })}
         className={`fixed w-full z-50 transition-all duration-300 ease-in-out ${
           isScrolled 
-            ? 'bg-gray-900/95 backdrop-blur-lg border-b border-gray-800 shadow-lg' 
+            ? 'bg-[var(--color-card)] backdrop-blur-xl border-b border-[var(--color-border)] shadow-[0_20px_40px_rgba(2,8,23,0.18)]' 
             : 'bg-transparent'
         }`}
       >
@@ -88,10 +88,10 @@ export default function Navbar() {
                 transition={linkTransition}
               >
                 <Image
-                  src="/images/lg-01.png"
+                  src="/images/logo.svg"
                   alt="Ripple Nexus Logo"
                   fill
-                  className="object-contain transition-all duration-300 brightness-100"
+                  className="object-contain transition-all duration-300 brightness-110"
                   sizes="48px"
                   priority
                 />
@@ -103,12 +103,12 @@ export default function Navbar() {
                   {...getWhileHover({ x: 3 })}
                   transition={linkTransition}
                 >
-                  <span className="text-[#1e56d6] transition-colors duration-300">RIPPLE</span>
+                  <span className="text-primary-500 transition-colors duration-300">RIPPLE</span>
                   <span className="mx-1"></span>
-                  <span className="text-white transition-colors duration-300">NEXUS</span>
+                  <span className="text-[var(--color-fg)] transition-colors duration-300">NEXUS</span>
                 </motion.div>
                 
-                <span className="text-xs font-semibold text-green-400 mt-1">
+                <span className="text-xs font-semibold text-accent-400 mt-1">
                   Udyam Certified MSME, Govt. of India
                 </span>
               </div>
@@ -124,10 +124,10 @@ export default function Navbar() {
                 >
                   <Link
                     href={link.href}
-                    className="text-base font-medium text-gray-300 hover:text-[#1e56d6] transition-colors duration-200 relative group px-2 py-2"
+                    className="text-base font-medium text-[var(--color-muted)] hover:text-primary-400 transition-colors duration-200 relative group px-2 py-2"
                   >
                     {link.label}
-                    <span className="absolute bottom-0.5 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-[#1e56d6] transition-all duration-300 group-hover:w-full rounded-full"></span>
+                    <span className="absolute bottom-0.5 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary-400 transition-all duration-300 group-hover:w-full rounded-full"></span>
                   </Link>
                 </motion.div>
               ))}
@@ -136,7 +136,7 @@ export default function Navbar() {
 
             <div className="flex items-center space-x-4 md:hidden">
               <button
-                className="text-white p-2 rounded-lg hover:bg-gray-800 transition-colors"
+                className="text-[var(--color-fg)] p-2 rounded-xl hover:bg-[var(--color-accent-soft)] transition-colors"
                 onClick={toggleMobileMenu}
                 aria-label="Toggle mobile menu"
                 aria-expanded={isMobileMenuOpen}
@@ -176,7 +176,7 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             className="fixed inset-x-0 top-20 bottom-0 z-40 md:hidden" 
           >
-            <div className="fixed inset-x-0 top-20 bottom-0 bg-gray-900/98 backdrop-blur-xl shadow-2xl overflow-y-auto">
+            <div className="fixed inset-x-0 top-20 bottom-0 bg-[var(--color-card)] backdrop-blur-xl shadow-2xl overflow-y-auto">
               <div className="flex flex-col items-center justify-start pt-12 pb-10 space-y-6"> 
                 {navLinks.map((link, index) => (
                   <motion.div
@@ -189,7 +189,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className="text-2xl font-semibold text-gray-200 hover:text-[#1e56d6] transition-colors"
+                      className="text-2xl font-semibold text-[var(--color-fg)] hover:text-primary-400 transition-colors"
                       onClick={toggleMobileMenu}
                     >
                       {link.label}

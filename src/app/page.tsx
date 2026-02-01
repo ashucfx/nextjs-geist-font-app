@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { FadeInView, StaggerContainer, StaggerItem } from '@/components/animations/FadeInView';
+import { PremiumButton, PremiumCard } from '@/components/animations/PremiumButton';
 
 interface Solution {
   title: string;
@@ -36,13 +38,10 @@ const solutions: Solution[] = [
 
 const SolutionCard: React.FC<{ solution: Solution, index: number }> = ({ solution, index }) => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
+    <PremiumCard
       className="group relative bg-gray-800/80 backdrop-blur-md rounded-xl overflow-hidden
                   hover:shadow-2xl transition-all duration-500 shadow-xl shadow-blue-900/10 border border-[#1e56d6]/30"
+      hoverLift={6}
     >
       <div className="relative h-56">
         <Image
@@ -70,7 +69,7 @@ const SolutionCard: React.FC<{ solution: Solution, index: number }> = ({ solutio
           Learn More &rarr;
         </Link>
       </div>
-    </motion.div>
+    </PremiumCard>
   );
 };
 
@@ -89,61 +88,54 @@ export default function Home() {
                           bg-gradient-to-br from-gray-950 to-gray-900"> 
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
+          <div className="text-center">
 
-            <div className="mb-8 flex flex-col items-center">
-              <div className="relative w-20 h-20 mb-6"> 
+            <FadeInView delay={0.1} className="mb-8 flex flex-col items-center">
+              <div className="relative w-[70px] h-[105px] md:w-[100px] md:h-[160px] lg:w-[130px] lg:h-[210px] mb-6 animate-float-subtle"> 
                 <Image
-                  src="/images/lg-01.png"
+                  src="/images/logo-vertical.svg"
                   alt="Ripple Nexus Logo"
                   fill
-                  className="object-contain brightness-110"
-                  sizes="80px"
+                  className="object-contain"
+                  sizes="(max-width: 768px) 70px, (max-width: 1024px) 100px, 130px"
                   priority
                 />
               </div>
-            </div>
+            </FadeInView>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
-              Bridging Secure Technology to <br />
-              <span className="bg-gradient-to-r from-[#1e56d6] to-blue-600 bg-clip-text text-transparent">
-                Enterprise Impact
-              </span>
-            </h1>
+            <FadeInView delay={0.2}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+                Bridging Secure Technology to <br />
+                <span className="bg-gradient-to-r from-[#1e56d6] to-blue-600 bg-clip-text text-transparent">
+                  Enterprise Impact
+                </span>
+              </h1>
+            </FadeInView>
 
-<p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
-  We deliver <strong className="font-extrabold">auditable, compliant, and scalable digital transformation</strong> solutions for organizations requiring stability and growth.
-</p>
+            <FadeInView delay={0.3}>
+              <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
+                We deliver <strong className="font-extrabold">auditable, compliant, and scalable digital transformation</strong> solutions for organizations requiring stability and growth.
+              </p>
+            </FadeInView>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="inline-block">
-                <Link
-                  href="/contact"
-                  className="group relative px-10 py-4 bg-[#1e56d6] text-white rounded-lg text-lg font-semibold overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 block h-full"
-                >
-                  <span className="relative z-10">Engage with Our Experts &rarr;</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#1e56d6] to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <FadeInView delay={0.4}>
+              <div className="flex flex-col sm:flex-row justify-center gap-6">
+                <Link href="/contact">
+                  <PremiumButton variant="primary" size="lg" className="group relative overflow-hidden">
+                    <span className="relative z-10">Engage with Our Experts &rarr;</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#1e56d6] to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </PremiumButton>
                 </Link>
-              </motion.div>
 
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="inline-block">
-                <Link
-                  href="/about"
-                  className="px-10 py-4 bg-gray-800/60 text-gray-200 rounded-lg text-lg font-medium backdrop-blur-sm hover:bg-gray-700/80 transition-all duration-300 border border-gray-700 shadow-md block h-full"
-                >
-                  Read Our Authority Statement
+                <Link href="/about">
+                  <PremiumButton variant="ghost" size="lg">
+                    Read Our Authority Statement
+                  </PremiumButton>
                 </Link>
-              </motion.div>
-
-            </div>
+              </div>
+            </FadeInView>
             
-            <div className="pt-20">
+            <FadeInView delay={0.6} className="pt-20">
               <Link
                 href="#solutions"
                 className="text-white/80 text-center cursor-pointer hover:text-white transition-colors group"
@@ -160,70 +152,58 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </motion.svg>
               </Link>
-            </div>
+            </FadeInView>
             
-          </motion.div>
+          </div>
         </div>
       </section>
 
       <section id="solutions" className="py-24 bg-gradient-to-br from-gray-900 to-[#1e56d6]/10 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <FadeInView className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Core Competencies for Digital Governance
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               End-to-end digital transformation services tailored to your organizational mandate and strategic goals.
             </p>
-          </motion.div>
+          </FadeInView>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10" staggerDelay={0.1}>
             {solutions.map((solution, index) => (
-              <SolutionCard key={index} solution={solution} index={index} />
+              <StaggerItem key={index}>
+                <SolutionCard solution={solution} index={index} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
       <section className="py-24 bg-gradient-to-r from-gray-950/90 to-gray-800/90 transition-colors duration-500 border-t border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
+          <FadeInView className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Our Track Record and Commitment
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Verified metrics that establish trust and our dedication to your long-term success.
             </p>
-          </motion.div>
+          </FadeInView>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-8" staggerDelay={0.08}>
             {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-800/70 backdrop-blur-md p-8 rounded-xl text-center
+              <StaggerItem key={index}>
+                <PremiumCard
+                  className="bg-gray-800/70 backdrop-blur-md p-8 rounded-xl text-center
                             hover:bg-gray-700/80 transition-all duration-300 shadow-lg shadow-blue-900/10 border border-gray-700/50"
-              >
-                <div className="text-4xl md:text-5xl font-extrabold text-[#1e56d6] mb-2">{stat.number}</div>
-                <div className="text-lg text-gray-300 font-semibold">{stat.label}</div>
-              </motion.div>
+                  hoverLift={6}
+                >
+                  <div className="text-4xl md:text-5xl font-extrabold text-[#1e56d6] mb-2">{stat.number}</div>
+                  <div className="text-lg text-gray-300 font-semibold">{stat.label}</div>
+                </PremiumCard>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
 
@@ -245,18 +225,11 @@ export default function Home() {
               Contact us today to begin a confidential assessment of your organization's digital roadmap.
             </p>
 
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-block"
-            >
-              <Link
-                href="/contact"
-                className="inline-block px-10 py-5 bg-white text-[#1e56d6] rounded-lg text-xl font-extrabold hover:bg-gray-100 transition-all duration-300 shadow-2xl hover:shadow-3xl"
-              >
+            <Link href="/contact">
+              <PremiumButton variant="secondary" size="lg" className="shadow-2xl">
                 Request a Consultation
-              </Link>
-            </motion.div>
+              </PremiumButton>
+            </Link>
 
           </motion.div>
         </div>
