@@ -38,17 +38,17 @@ export function PremiumButton({
 
   return (
     <motion.button
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1e56d6] will-change-transform ${className}`}
       whileHover={{
         y: -3,
         boxShadow: variant === 'primary' 
           ? '0 12px 24px rgba(30, 86, 214, 0.25)'
           : '0 8px 16px rgba(0, 0, 0, 0.15)'
       }}
-      whileTap={{ scale: 0.98 }}
+      whileTap={{ scale: 0.96 }}
       transition={{
-        duration: 0.2,
-        ease: 'easeOut'
+        duration: 0.15,
+        ease: [0.16, 1, 0.3, 1]
       }}
       {...props}
     >
@@ -72,10 +72,10 @@ export function PremiumCard({
 } & HTMLMotionProps<"div">) {
   return (
     <motion.div
-      className={className}
+      className={`${className} will-change-transform`}
       whileHover={{
         y: -hoverLift,
-        transition: { duration: 0.22, ease: 'easeOut' }
+        transition: { duration: 0.18, ease: [0.16, 1, 0.3, 1] }
       }}
       {...props}
     >

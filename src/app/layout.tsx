@@ -69,6 +69,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans min-h-screen antialiased transition-colors duration-300 bg-[var(--color-bg)] text-[var(--color-fg)]`}
       >
+        <style>{`
+          @media (prefers-reduced-motion: reduce) {
+            * {
+              animation-duration: 0.01ms !important;
+              transition-duration: 0.01ms !important;
+            }
+          }
+        `}</style>
         <ThemeProvider />
         <SmoothScroll />
         <BubbleCursor />
@@ -76,7 +84,7 @@ export default function RootLayout({
         <div className="flex flex-col min-h-screen">
           <Navbar />
 
-          <main className="flex-grow pt-20 transition-colors duration-300 app-main">
+          <main className="flex-grow pt-32 md:pt-28 lg:pt-24 transition-colors duration-300 app-main">
             <PageTransition>{children}</PageTransition>
           </main>
 

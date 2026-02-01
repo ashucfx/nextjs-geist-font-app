@@ -50,18 +50,18 @@ export default function Contact() {
         </div>
       </section>
       
-      <section className="py-24 bg-gray-900">
+      <section className="py-16 sm:py-20 md:py-24 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 md:gap-16">
             
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-1 space-y-10"
+              className="lg:col-span-1 space-y-8 sm:space-y-10"
             >
-              <h2 className="text-3xl font-extrabold text-white">Digital Channels</h2>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-white">Digital Channels</h2>
               
               <div className="space-y-6">
                 <ContactCard
@@ -114,13 +114,13 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-2 flex flex-col justify-center items-center text-center"
+              className="md:col-span-1 lg:col-span-2 flex flex-col justify-center items-center text-center"
             >
-              <div className="bg-gray-800 p-10 rounded-xl shadow-2xl border-gray-700 border w-full max-w-lg">
-                <h2 className="text-4xl font-extrabold text-white mb-4">
+              <div className="bg-gray-800 p-6 sm:p-8 md:p-10 rounded-xl shadow-2xl border-gray-700 border w-full max-w-lg">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-4">
                     Book Your Strategy Session
                 </h2>
-                <p className="text-xl text-gray-400 mb-10">
+                <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10">
                     The fastest way to engage our team. Select a convenient time for a 30-minute confidential consultation.
                 </p>
                 
@@ -128,12 +128,12 @@ export default function Contact() {
                     href={calendlyUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-8 py-4 bg-[#1e56d6] text-white font-extrabold rounded-lg hover:bg-blue-700 transition-colors shadow-lg text-lg"
+                    className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-[#1e56d6] text-white font-extrabold rounded-lg hover:bg-blue-700 transition-colors shadow-lg text-sm sm:text-base md:text-lg"
                 >
                     Schedule Now
-                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                 </a>
-                <p className="text-sm text-gray-500 mt-6">
+                <p className="text-xs sm:text-sm text-gray-500 mt-4 sm:mt-6">
                     *Link opens our secure scheduling tool in a new window.
                 </p>
               </div>

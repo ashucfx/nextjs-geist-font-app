@@ -87,24 +87,29 @@ export default function Home() {
       <section className="min-h-[90vh] flex flex-col justify-center items-center transition-colors duration-500 border-b border-gray-800 
                           bg-gradient-to-br from-gray-950 to-gray-900"> 
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-40">
           <div className="text-center">
 
-            <FadeInView delay={0.1} className="mb-8 flex flex-col items-center">
-              <div className="relative w-[70px] h-[105px] md:w-[100px] md:h-[160px] lg:w-[130px] lg:h-[210px] mb-6 animate-float-subtle"> 
+            <FadeInView delay={0.1} className="mb-4 flex flex-col items-center">
+              <motion.div 
+                className="relative w-[100px] h-[150px] sm:w-[130px] sm:h-[195px] md:w-[170px] md:h-[255px] lg:w-[240px] lg:h-[360px] mb-2 animate-float-subtle" 
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              >
                 <Image
                   src="/images/logo-vertical.svg"
                   alt="Ripple Nexus Logo"
                   fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 70px, (max-width: 1024px) 100px, 130px"
+                  className="object-contain drop-shadow-2xl"
+                  sizes="(max-width: 640px) 100px, (max-width: 768px) 130px, (max-width: 1024px) 170px, 240px"
                   priority
                 />
-              </div>
+              </motion.div>
             </FadeInView>
 
             <FadeInView delay={0.2}>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-3 leading-tight tracking-tight">
                 Bridging Secure Technology to <br />
                 <span className="bg-gradient-to-r from-[#1e56d6] to-blue-600 bg-clip-text text-transparent">
                   Enterprise Impact
@@ -113,7 +118,7 @@ export default function Home() {
             </FadeInView>
 
             <FadeInView delay={0.3}>
-              <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-4xl mx-auto leading-relaxed font-medium">
+              <p className="text-xl md:text-2xl text-gray-300 mb-6 max-w-4xl mx-auto leading-relaxed font-medium">
                 We deliver <strong className="font-extrabold">auditable, compliant, and scalable digital transformation</strong> solutions for organizations requiring stability and growth.
               </p>
             </FadeInView>
@@ -158,7 +163,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="solutions" className="py-24 bg-gradient-to-br from-gray-900 to-[#1e56d6]/10 transition-colors duration-500">
+      <section id="solutions" className="py-24 md:py-32 lg:py-40 bg-gradient-to-br from-gray-900 to-[#1e56d6]/10 transition-colors duration-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInView className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
@@ -208,14 +213,14 @@ export default function Home() {
       </section>
 
 
-      <section className="py-28 bg-gradient-to-br from-[#1e56d6] to-blue-800 relative overflow-hidden">
+      <section className="py-24 md:py-32 lg:py-40 bg-gradient-to-br from-[#1e56d6] to-blue-800 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 mix-blend-overlay" style={{ backgroundImage: 'url("/images/tech-pattern.svg")' }}></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="text-center"
           >
             <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-8">

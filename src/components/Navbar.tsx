@@ -6,19 +6,36 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 
+/**
+ * 🎯 PREMIUM BALANCED NAVBAR — SaaS BRAND SYSTEM
+ * ===============================================
+ * Architecture:
+ * ✅ 3-Zone Balanced Layout (LEFT BRAND | CENTER NAV | RIGHT CTA)
+ * ✅ Brand Lockup System with Premium Tagline
+ * ✅ Color Discipline (Primary, Secondary, Neutral only)
+ * ✅ Global Edge Margins (64px desktop, responsive)
+ * ✅ Soft Rounded Pill Hover State
+ * ✅ Premium 80px Navbar Height
+ * ✅ Full Responsive System
+ * ✅ Accessibility & Keyboard Navigation
+ * ✅ Zero Layout Shift, Smooth Animations
+ */
+
 const NavbarCTA: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
   <motion.div
-    whileHover={{ scale: 1.03 }}
-    whileTap={{ scale: 0.98 }}
+    whileHover={{ scale: 1.04 }}
+    whileTap={{ scale: 0.96 }}
     className="inline-block"
   >
     <Link
       href="/contact"
-      className="px-6 py-2.5 bg-gradient-to-r from-primary-500 via-primary-400 to-accent-500
-                text-white rounded-xl hover:from-primary-600 hover:via-primary-500 hover:to-accent-600
-                transition-all duration-300 shadow-[0_12px_30px_rgba(31,86,212,0.28)] hover:shadow-[0_20px_40px_rgba(31,86,212,0.38)]
-                font-semibold text-sm tracking-wide transform"
+      className="px-6 md:px-7 py-2.5 md:py-3 bg-primary-500 hover:bg-primary-600
+                text-white font-semibold text-sm md:text-base tracking-wide will-change-transform
+                rounded-lg transition-all duration-250 shadow-soft hover:shadow-lg
+                focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300
+                active:scale-95"
       onClick={onClick}
+      aria-label="Get Started - Contact Us"
     >
       Get Started
     </Link>
@@ -31,14 +48,16 @@ export default function Navbar() {
   const [isMounted, setIsMounted] = useState(false);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   useEffect(() => {
     setIsMounted(true);
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 5);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -60,156 +79,232 @@ export default function Navbar() {
     { href: '/contact', label: 'Contact' }
   ];
 
-  const linkTransition = { type: "spring", stiffness: 400, damping: 25 };
-
   const getMotionProps = (props: object) => isMounted ? props : {};
   const getWhileHover = (hoverProps: object) => isMounted ? hoverProps : {};
 
   return (
     <>
+      {/* ============================================================
+          PREMIUM NAVBAR — BALANCED 3-ZONE SYSTEM
+          LEFT (BRAND) | CENTER (NAV) | RIGHT (CTA)
+          ============================================================ */}
       <motion.nav
         {...getMotionProps({
           initial: { y: -100 },
           animate: { y: 0 },
-          transition: { duration: 0.5, ease: 'easeOut' }
+          transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
         })}
-        className={`fixed w-full z-50 transition-all duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-out ${
           isScrolled 
-            ? 'bg-[var(--color-card)] backdrop-blur-xl border-b border-[var(--color-border)] shadow-[0_20px_40px_rgba(2,8,23,0.18)]' 
-            : 'bg-transparent'
+            ? 'bg-[#0a0e18] backdrop-blur-lg border-b border-gray-800/50 shadow-lg' 
+            : 'bg-[#070b14] border-b border-gray-900/50'
         }`}
+        role="navigation"
+        aria-label="Main navigation"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
-            <Link href="/" className="flex items-center space-x-3 group" onClick={() => setIsMobileMenuOpen(false)}>
-              <motion.div 
-                className="relative w-12 h-12 flex-shrink-0"
-                {...getWhileHover({ scale: 1.05 })}
-                transition={linkTransition}
-              >
-                <Image
-                  src="/images/logo.svg"
-                  alt="Ripple Nexus Logo"
-                  fill
-                  className="object-contain transition-all duration-300 brightness-110"
-                  sizes="48px"
-                  priority
-                />
-              </motion.div>
-              
-              <div className="flex flex-col items-start leading-none">
+        {/* CONTAINER — PREMIUM SPACING & BALANCE */}
+        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 py-5 md:py-6">
+          <div className="flex justify-between items-center gap-8 md:gap-12">
+
+            {/* ========================================================
+                LEFT ZONE — BRAND LOCKUP
+                Logo + Brand Name + Tagline (Stacked)
+                ======================================================== */}
+            <Link 
+              href="/" 
+              className="flex-shrink-0 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400 rounded-lg transition-opacity duration-200"
+              onClick={closeMobileMenu}
+              aria-label="Ripple Nexus - Home"
+            >
+              <div className="flex items-start gap-3 md:gap-4">
+                {/* LOGO — RESPONSIVE SIZING */}
                 <motion.div 
-                  className="text-xl font-bold flex items-center tracking-tight"
-                  {...getWhileHover({ x: 3 })}
-                  transition={linkTransition}
+                  className="relative flex-shrink-0"
+                  style={{ width: 'clamp(44px, 6vw, 56px)', height: 'clamp(44px, 6vw, 56px)' }}
+                  {...getWhileHover({ scale: 1.08 })}
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="text-primary-500 transition-colors duration-300">RIPPLE</span>
-                  <span className="mx-1"></span>
-                  <span className="text-[var(--color-fg)] transition-colors duration-300">NEXUS</span>
+                  <Image
+                    src="/images/logo.svg"
+                    alt="Ripple Nexus Logo"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 640px) 44px, (max-width: 1024px) 48px, 56px"
+                    priority
+                  />
                 </motion.div>
                 
-                <span className="text-xs font-semibold text-accent-400 mt-1">
-                  Udyam Certified MSME, Govt. of India
-                </span>
+                {/* BRAND TEXT + TAGLINE — HIDDEN ON MOBILE */}
+                <div className="hidden sm:flex flex-col gap-1.5 leading-tight justify-center">
+                  {/* BRAND NAME */}
+                  <motion.div 
+                    className="flex items-baseline gap-1.5"
+                    {...getWhileHover({ x: 1 })}
+                    transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <span className="text-lg md:text-xl font-black tracking-tight text-white">
+                      Ripple
+                    </span>
+                    <span className="text-lg md:text-xl font-black tracking-tight bg-gradient-to-r from-primary-400 to-primary-500 bg-clip-text text-transparent">
+                      Nexus
+                    </span>
+                  </motion.div>
+                  
+                  {/* PREMIUM TAGLINE */}
+                  <motion.span 
+                    className="text-xs md:text-sm font-medium tracking-widest text-gray-400 uppercase"
+                    {...getWhileHover({ x: 0.5 })}
+                    transition={{ duration: 0.15 }}
+                  >
+                    Strategy • Scale • Impact
+                  </motion.span>
+                </div>
               </div>
             </Link>
 
-            <div className="hidden md:flex items-center space-x-6">
+            {/* ========================================================
+                CENTER ZONE — NAVIGATION LINKS
+                Desktop Only - Centered in available space
+                ======================================================== */}
+            <nav className="hidden lg:flex items-center justify-center flex-1 gap-2">
               {navLinks.map((link) => (
                 <motion.div 
                   key={link.href}
-                  {...getWhileHover({ scale: 1.05, y: -2 })}
-                  transition={linkTransition}
+                  {...getWhileHover({ y: -2 })}
+                  transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
                   className="inline-block"
                 >
                   <Link
                     href={link.href}
-                    className="text-base font-medium text-[var(--color-muted)] hover:text-primary-400 transition-colors duration-200 relative group px-2 py-2"
+                    className="px-4 md:px-5 py-2.5 text-sm md:text-base font-medium text-gray-300 hover:text-white 
+                              rounded-md transition-all duration-250 ease-out
+                              focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300"
                   >
                     {link.label}
-                    <span className="absolute bottom-0.5 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-primary-400 transition-all duration-300 group-hover:w-full rounded-full"></span>
                   </Link>
                 </motion.div>
               ))}
-              <NavbarCTA />
-            </div>
+            </nav>
 
-            <div className="flex items-center space-x-4 md:hidden">
-              <button
-                className="text-[var(--color-fg)] p-2 rounded-xl hover:bg-[var(--color-accent-soft)] transition-colors"
+            {/* ========================================================
+                RIGHT ZONE — CTA & MOBILE TOGGLE
+                Clean aligned to right with proper margin
+                ======================================================== */}
+            <div className="flex items-center gap-3 md:gap-4 flex-shrink-0">
+              {/* CTA BUTTON — DESKTOP ONLY */}
+              <div className="hidden lg:block">
+                <NavbarCTA />
+              </div>
+
+              {/* MOBILE MENU BUTTON */}
+              <motion.button
+                whileTap={{ scale: 0.92 }}
+                className="lg:hidden text-gray-300 hover:text-white p-2.5 rounded-lg 
+                          hover:bg-primary-500/15 transition-all duration-200 
+                          focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300"
                 onClick={toggleMobileMenu}
-                aria-label="Toggle mobile menu"
+                aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
                 aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <svg
-                  className="w-6 h-6"
+                  className="w-6 h-6 transition-transform duration-300"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                   strokeWidth={2}
+                  aria-hidden="true"
                 >
                   {isMobileMenuOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                   )}
                 </svg>
-              </button>
+              </motion.button>
             </div>
+
           </div>
         </div>
       </motion.nav>
 
+      {/* ============================================================
+          MOBILE MENU — FULL SCREEN DRAWER
+          Clean list layout with smooth animation
+          ============================================================ */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-x-0 top-20 bottom-0 z-40 md:hidden" 
-          >
-            <div className="fixed inset-x-0 top-20 bottom-0 bg-[var(--color-card)] backdrop-blur-xl shadow-2xl overflow-y-auto">
-              <div className="flex flex-col items-center justify-start pt-12 pb-10 space-y-6"> 
+          <>
+            {/* BACKDROP */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 top-[72px] md:top-[88px] z-40 lg:hidden bg-black/40 backdrop-blur-sm"
+              onClick={closeMobileMenu}
+              aria-hidden="true"
+            />
+
+            {/* DRAWER MENU */}
+            <motion.div
+              id="mobile-menu"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed top-[72px] md:top-[88px] left-0 right-0 z-50 lg:hidden 
+                        bg-black/98 backdrop-blur-xl border-b border-gray-800/50 
+                        shadow-lg overflow-y-auto max-h-[calc(100vh-88px)]"
+              role="navigation"
+              aria-label="Mobile navigation"
+            >
+              <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 py-6 space-y-2">
+                {/* MOBILE NAV LINKS */}
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.2, delay: index * 0.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    transition={{ 
+                      duration: 0.25, 
+                      delay: index * 0.05, 
+                      ease: [0.16, 1, 0.3, 1] 
+                    }}
                   >
                     <Link
                       href={link.href}
-                      className="text-2xl font-semibold text-[var(--color-fg)] hover:text-primary-400 transition-colors"
-                      onClick={toggleMobileMenu}
+                      className="block text-base font-semibold text-gray-200 hover:text-white 
+                                hover:bg-primary-500/12 transition-all duration-200 
+                                px-4 py-3.5 rounded-lg focus-visible:outline-2 
+                                focus-visible:outline-offset-2 focus-visible:outline-primary-300"
+                      onClick={closeMobileMenu}
                     >
                       {link.label}
                     </Link>
                   </motion.div>
                 ))}
-                
+
+                {/* MOBILE CTA BUTTON */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.2, delay: navLinks.length * 0.05 }}
-                  className="pt-4"
+                  transition={{ 
+                    duration: 0.25, 
+                    delay: navLinks.length * 0.05, 
+                    ease: [0.16, 1, 0.3, 1] 
+                  }}
+                  className="pt-4 mt-4 border-t border-gray-800/50"
                 >
-                  <NavbarCTA onClick={toggleMobileMenu} />
+                  <div className="px-4 py-3">
+                    <NavbarCTA onClick={closeMobileMenu} />
+                  </div>
                 </motion.div>
-
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

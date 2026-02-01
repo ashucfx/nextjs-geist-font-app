@@ -1,30 +1,30 @@
-<svg width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Nexus Icon -->
-  <g transform="translate(80, 100)">
-    <circle cx="0" cy="0" r="12" fill="#000000"/>
+  <g transform="translate(200, 150)">
+    <circle cx="0" cy="0" r="16" fill="#1f56d4"/>
     
-        <line x1="0" y1="0" x2="32" y2="0" stroke="#000000" stroke-width="4" opacity="0.6"/>
-        <circle cx="32" cy="0" r="7" fill="#000000"/>
+        <line x1="0" y1="0" x2="42" y2="0" stroke="#1f56d4" stroke-width="5" opacity="0.6"/>
+        <circle cx="42" cy="0" r="9" fill="#1f56d4"/>
       
-        <line x1="0" y1="0" x2="16.000000000000004" y2="27.712812921102035" stroke="#000000" stroke-width="4" opacity="0.6"/>
-        <circle cx="16.000000000000004" cy="27.712812921102035" r="7" fill="#000000"/>
+        <line x1="0" y1="0" x2="21.000000000000004" y2="36.373066958946424" stroke="#1f56d4" stroke-width="5" opacity="0.6"/>
+        <circle cx="21.000000000000004" cy="36.373066958946424" r="9" fill="#1f56d4"/>
       
-        <line x1="0" y1="0" x2="-15.999999999999993" y2="27.71281292110204" stroke="#000000" stroke-width="4" opacity="0.6"/>
-        <circle cx="-15.999999999999993" cy="27.71281292110204" r="7" fill="#000000"/>
+        <line x1="0" y1="0" x2="-20.99999999999999" y2="36.373066958946424" stroke="#1f56d4" stroke-width="5" opacity="0.6"/>
+        <circle cx="-20.99999999999999" cy="36.373066958946424" r="9" fill="#1f56d4"/>
       
-        <line x1="0" y1="0" x2="-32" y2="3.91886975727153e-15" stroke="#000000" stroke-width="4" opacity="0.6"/>
-        <circle cx="-32" cy="3.91886975727153e-15" r="7" fill="#000000"/>
+        <line x1="0" y1="0" x2="-42" y2="5.143516556418883e-15" stroke="#1f56d4" stroke-width="5" opacity="0.6"/>
+        <circle cx="-42" cy="5.143516556418883e-15" r="9" fill="#1f56d4"/>
       
-        <line x1="0" y1="0" x2="-16.000000000000014" y2="-27.712812921102028" stroke="#000000" stroke-width="4" opacity="0.6"/>
-        <circle cx="-16.000000000000014" cy="-27.712812921102028" r="7" fill="#000000"/>
+        <line x1="0" y1="0" x2="-21.000000000000018" y2="-36.37306695894641" stroke="#1f56d4" stroke-width="5" opacity="0.6"/>
+        <circle cx="-21.000000000000018" cy="-36.37306695894641" r="9" fill="#1f56d4"/>
       
-        <line x1="0" y1="0" x2="16.000000000000004" y2="-27.712812921102035" stroke="#000000" stroke-width="4" opacity="0.6"/>
-        <circle cx="16.000000000000004" cy="-27.712812921102035" r="7" fill="#000000"/>
+        <line x1="0" y1="0" x2="21.000000000000004" y2="-36.373066958946424" stroke="#1f56d4" stroke-width="5" opacity="0.6"/>
+        <circle cx="21.000000000000004" cy="-36.373066958946424" r="9" fill="#1f56d4"/>
       
-    <circle cx="56" cy="0" r="5" fill="#3FBD8B" opacity="0.8"/><circle cx="39.59797974644666" cy="39.597979746446654" r="5" fill="#3FBD8B" opacity="0.8"/><circle cx="3.429011037612589e-15" cy="56" r="5" fill="#3FBD8B" opacity="0.8"/><circle cx="-39.597979746446654" cy="39.59797974644666" r="5" fill="#3FBD8B" opacity="0.8"/><circle cx="-56" cy="6.858022075225178e-15" r="5" fill="#3FBD8B" opacity="0.8"/><circle cx="-39.59797974644667" cy="-39.597979746446654" r="5" fill="#3FBD8B" opacity="0.8"/><circle cx="-1.0287033112837767e-14" cy="-56" r="5" fill="#3FBD8B" opacity="0.8"/><circle cx="39.597979746446654" cy="-39.59797974644667" r="5" fill="#3FBD8B" opacity="0.8"/>
+    <circle cx="74" cy="0" r="6.5" fill="#3FBD8B" opacity="0.8"/><circle cx="52.32590180780452" cy="52.32590180780451" r="6.5" fill="#3FBD8B" opacity="0.8"/><circle cx="4.531193156845207e-15" cy="74" r="6.5" fill="#3FBD8B" opacity="0.8"/><circle cx="-52.32590180780451" cy="52.32590180780452" r="6.5" fill="#3FBD8B" opacity="0.8"/><circle cx="-74" cy="9.062386313690414e-15" r="6.5" fill="#3FBD8B" opacity="0.8"/><circle cx="-52.32590180780453" cy="-52.32590180780451" r="6.5" fill="#3FBD8B" opacity="0.8"/><circle cx="-1.359357947053562e-14" cy="-74" r="6.5" fill="#3FBD8B" opacity="0.8"/><circle cx="52.325901807804506" cy="-52.32590180780453" r="6.5" fill="#3FBD8B" opacity="0.8"/>
   </g>
   
   <!-- Company Name -->
-  <text x="220" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" letter-spacing="-1" fill="#000000">Ripple</text>
-  <text x="440" y="116" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="300" letter-spacing="1" fill="#000000">Nexus</text>
+  <text x="200" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" letter-spacing="-1" fill="#1a1a1a" text-anchor="middle">Ripple</text>
+  <text x="200" y="420" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="300" letter-spacing="1" fill="#1f56d4" text-anchor="middle">Nexus</text>
 </svg>

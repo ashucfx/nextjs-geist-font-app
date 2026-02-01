@@ -155,6 +155,18 @@ const allServices: Service[] = [
 
 
 const ServiceDetailModal: React.FC<{ service: Service, onClose: () => void }> = ({ service, onClose }) => {
+    React.useEffect(() => {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      return () => {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, scrollY);
+      };
+    }, []);
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -260,7 +272,7 @@ export default function Services() {
             <p className="text-xl text-gray-400">Services are categorized for clear identification of our primary focus areas.</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
             {allServices.map((service, index) => (
               <motion.div
                 key={index}
@@ -271,29 +283,29 @@ export default function Services() {
                 className="group bg-gray-800 rounded-xl overflow-hidden shadow-lg border border-gray-700 hover:shadow-2xl hover:border-[#1e56d6] transition-all duration-300 cursor-pointer"
                 onClick={() => handleOpenModal(service)}
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 sm:h-56 md:h-48 overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     priority={index === 0}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
                   <span className={`absolute top-4 right-4 text-xs font-semibold px-3 py-1 rounded-full text-white z-20 ${service.tag === 'Personal Strategy' ? 'bg-green-600' : 'bg-[#1e56d6]'}`}>
                     {service.tag}
                   </span>
-                  <h3 className="absolute bottom-4 left-4 text-xl font-bold text-white z-20">{service.title}</h3>
+                  <h3 className="absolute bottom-4 left-4 right-4 text-base sm:text-lg md:text-xl font-bold text-white z-20 line-clamp-2">{service.title}</h3>
                 </div>
-                <div className="p-6 space-y-4">
+                <div className="p-4 sm:p-6 space-y-4">
                   <h3 className="sr-only">{service.title}</h3> 
-                  <p className="text-gray-400">{service.description}</p>
+                  <p className="text-sm sm:text-base text-gray-400 line-clamp-3">{service.description}</p>
                   
                   <div className="pt-4 border-t border-gray-700">
-                    <button className="text-[#1e56d6] font-semibold flex items-center group-hover:translate-x-1 transition-transform" aria-label={`View details for ${service.title}`}>
+                    <button className="text-[#1e56d6] font-semibold flex items-center group-hover:translate-x-1 transition-transform text-sm sm:text-base" aria-label={`View details for ${service.title}`}>
                         View Details 
-                        <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                     </button>
                   </div>
                 </div>

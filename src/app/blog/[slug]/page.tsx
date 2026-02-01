@@ -70,14 +70,14 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
         </div>
 
-        <div className="relative w-full h-96 mb-12 rounded-xl overflow-hidden shadow-2xl shadow-blue-900/20">
+        <div className="relative w-full h-64 sm:h-80 md:h-96 mb-12 rounded-xl overflow-hidden shadow-2xl shadow-blue-900/20">
           <Image 
             src={image} 
             alt={title} 
             fill 
             className="object-cover" 
             priority 
-            sizes="(max-width: 1024px) 100vw, 75vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 75vw"
           />
         </div>
 

@@ -107,12 +107,34 @@ const CaseStudyModal: React.FC<{ study: CaseStudy, onClose: () => void }> = ({ s
     </h3>
   );
 
+  React.useEffect(() => {
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    
+    // Scroll modal into view
+    setTimeout(() => {
+      const modal = document.querySelector('[data-modal]');
+      if (modal) {
+        modal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+    
+    return () => {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      window.scrollTo(0, scrollY);
+    };
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm overflow-y-auto cursor-pointer p-4 pt-20 sm:p-8"
+      className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm overflow-y-auto cursor-pointer p-4 pt-4 sm:p-8 flex items-center justify-center"
       onClick={onClose}
     >
       <motion.div
@@ -120,8 +142,9 @@ const CaseStudyModal: React.FC<{ study: CaseStudy, onClose: () => void }> = ({ s
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 50, opacity: 0 }}
         transition={{ duration: 0.4 }}
-        className="relative max-w-4xl mx-auto bg-gray-800 rounded-xl shadow-2xl cursor-default my-8"
+        className="relative max-w-4xl w-full bg-gray-800 rounded-xl shadow-2xl cursor-default my-8"
         onClick={(e) => e.stopPropagation()}
+        data-modal
       >
         <button
           onClick={onClose}
@@ -287,7 +310,7 @@ export default function CaseStudiesClient() {
             ))}
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
             {filteredCaseStudies.length > 0 ? (
               <AnimatePresence>
                 {filteredCaseStudies.map((study, index) => (
@@ -298,40 +321,46 @@ export default function CaseStudiesClient() {
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                     
-                    className="group relative bg-gray-800 shadow-lg hover:shadow-blue-900/50 transition-all duration-300 cursor-pointer border border-gray-700/50 hover:border-[#1e56d6]/50"
-                    onClick={() => handleOpenModal(study)}
+                    className="group relative bg-gray-800 shadow-lg hover:shadow-blue-900/50 transition-all duration-300 border border-gray-700/50 hover:border-[#1e56d6]/50 rounded-lg overflow-hidden"
                   >
-                    <div className="relative h-48 w-full overflow-hidden">
+                    <div className="relative h-48 sm:h-56 md:h-48 w-full overflow-hidden">
                       <Image
                         src={study.image}
                         alt={study.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-black/60"></div>
                     </div>
 
-                    <div className="relative p-6 space-y-4">
+                    <div className="relative p-4 sm:p-6 space-y-4">
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-xl font-extrabold text-white group-hover:text-[#1e56d6] transition-colors leading-tight">
+                        <h3 className="text-base sm:text-lg md:text-xl font-extrabold text-white group-hover:text-[#1e56d6] transition-colors leading-tight line-clamp-2">
                           {study.title}
                         </h3>
                       </div>
 
                       <div className="border-t border-gray-700 pt-4">
-                        <div className="flex items-center text-sm text-green-500 mb-2 font-semibold">
+                        <div className="flex items-center text-xs sm:text-sm text-green-500 mb-2 font-semibold">
                           <CheckIcon />
                           Verified Client Outcomes
                         </div>
-                        <p className="text-2xl font-bold text-white leading-snug">{study.previewMetric}</p>
-                        <p className="text-sm text-gray-400">{study.previewResult}</p>
+                        <p className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-snug">{study.previewMetric}</p>
+                        <p className="text-xs sm:text-sm text-gray-400 line-clamp-2">{study.previewResult}</p>
                       </div>
 
                       <div className="mt-6 pt-4 border-gray-700 border-t">
-                        <button className="text-[#1e56d6] font-semibold flex items-center group-hover:translate-x-1 transition-transform">
+                        <button 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handleOpenModal(study);
+                          }}
+                          className="text-[#1e56d6] font-semibold flex items-center group-hover:translate-x-1 transition-transform text-sm sm:text-base cursor-pointer hover:text-blue-400 active:scale-95"
+                        >
                           View Full Study
-                          <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                          <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                         </button>
                       </div>
                     </div>
