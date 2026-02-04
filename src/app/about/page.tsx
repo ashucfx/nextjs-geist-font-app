@@ -1,152 +1,190 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import React from 'react';
-
-const InnovationIcon = () => (<svg className="w-8 h-8 text-[#1e56d6]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>);
-const ExcellenceIcon = () => (<svg className="w-8 h-8 text-[#1e56d6]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>);
-const IntegrityIcon = () => (<svg className="w-8 h-8 text-[#1e56d6]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a3 3 0 003-3V6a3 3 0 00-3-3H6a3 3 0 00-3 3v12a3 3 0 003 3z" /></svg>);
-const StrategyIcon = () => (<svg className="w-8 h-8 text-[#1e56d6]" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m6-12h2a2 2 0 012 2v10m-8-2h8m-12-4h12m-2-4h2a2 2 0 002-2V4a2 2 0 00-2-2h-2m-8 2h-2a2 2 0 00-2 2v4a2 2 0 002 2h2" /></svg>);
+import Link from 'next/link';
+import { FadeInView, StaggerContainer, StaggerItem } from '@/components/animations/FadeInView';
+import { PremiumButton } from '@/components/animations/PremiumButton';
 
 export default function About() {
     
-  const corePrinciples = [
+  const principles = [
     {
-      title: "Innovation & Foresight",
-      description: "We don't just follow trends; we pioneer solutions that define the next generation of digital infrastructure.",
-      icon: <InnovationIcon />
+      title: "No BS, Just Results",
+      description: "We don't oversell. We tell you exactly what's possible in your timeline and budget, then deliver it.",
+      icon: (
+        <svg className="w-12 h-12 text-[#1e56d6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
     },
     {
-      title: "Security & Integrity",
-      description: "Our foundation is trust. We uphold rigorous compliance and security standards in every enterprise solution.",
-      icon: <IntegrityIcon />
+      title: "Code First, Marketing Second",
+      description: "We're engineers who can communicate, not marketers who dabble in code. Technical depth is our foundation.",
+      icon: (
+        <svg className="w-12 h-12 text-[#1e56d6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      )
     },
     {
-      title: "Execution Excellence",
-      description: "From strategy ideation to flawless deployment, we ensure precision, quality, and measurable impact.",
-      icon: <ExcellenceIcon />
+      title: "Your Success = Our Success",
+      description: "We measure success by your production uptime, not our project count. Long-term partnerships over one-off gigs.",
+      icon: (
+        <svg className="w-12 h-12 text-[#1e56d6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+        </svg>
+      )
     },
     {
-      title: "Strategic Partnership",
-      description: "We embed ourselves as a long-term strategic partner, focusing on your sustainable growth, not just project completion.",
-      icon: <StrategyIcon />
+      title: "Transparent Pricing",
+      description: "Fixed-price milestones or hourly rates. You'll know what you're paying before we start. No surprise invoices.",
+      icon: (
+        <svg className="w-12 h-12 text-[#1e56d6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      )
     }
   ];
 
+  const stats = [
+    { number: "2024", label: "Founded" },
+    { number: "50+", label: "Production Apps" },
+    { number: "99.9%", label: "Avg. Uptime" },
+    { number: "12", label: "Countries" }
+  ];
+
   return (
-    <div className="pt-20">
-      <section className="relative min-h-[40vh] flex items-center bg-gradient-to-br from-gray-950 to-gray-900 border-b border-gray-800 transition-colors duration-500">
-        
-        <div className="relative z-10 max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 w-full">
+    <div className="pt-16 sm:pt-20">
+      {/* Hero */}
+      <section className="relative min-h-[40vh] sm:min-h-[45vh] md:min-h-[50vh] flex items-center bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800">
+        <div className="relative z-10 max-w-7xl mx-auto py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-12 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-left"
+            transition={{ duration: 0.6 }}
           >
-            <p className="text-lg font-semibold uppercase tracking-widest text-[#1e56d6] mb-2">Our Mission, Vision, and Values</p>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4">
-              The Authority Statement
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white mb-4 sm:mb-6 leading-tight">
+              About Ripple Nexus
             </h1>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl leading-relaxed">
+              We build production systems for companies navigating complex technical transitions. 
+              Founded by engineers, run by engineers, focused on engineering excellence.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-24 bg-gray-900 transition-colors duration-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
-            
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="space-y-6"
-            >
-                <h2 className="text-4xl font-extrabold text-[#1e56d6] mb-4">Our Vision</h2>
-                <p className="text-xl leading-relaxed text-gray-300">
-                    At <strong>Ripple Nexus</strong>, we envision a future where complex <strong>digital governance</strong> and large-scale <strong>enterprise solutions</strong> are seamlessly merged into intuitive, compliant, and scalable ecosystems. We strive to be the <strong>convergence point</strong> where bold vision meets technical certainty.
-                </p>
-                <p className="text-lg leading-relaxed text-gray-400">
-                    Our focus is on building robust architectures that stand up to the most rigorous security and performance demands of public and private sector clients. We deliver technology as a strategic asset, not just a service.
-                </p>
-            </motion.div>
-
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="space-y-6"
-            >
-                <h2 className="text-4xl font-extrabold text-[#1e56d6] mb-4">Our Ethos</h2>
-                <p className="text-xl leading-relaxed text-gray-300">
-                    The name <strong>Ripple Nexus</strong> is our commitment: <strong>Ripple</strong> symbolizes the power of strategic innovation to create waves of measurable impact, and <strong>Nexus</strong> represents the convergence of specialized talent and technology.
-                </p>
-                <p className="text-lg leading-relaxed text-gray-400">
-                    As a digital-first, agile sole proprietorship, we maintain maximum focus and accountability, ensuring direct access to senior expertise for every engagement. We are dedicated to transparent processes and audited results.
-                </p>
-            </motion.div>
-
-        </div>
-      </section>
-
-      <section className="py-24 bg-gradient-to-r from-gray-950 to-gray-900 transition-colors duration-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <p className="text-xl font-medium text-gray-400 mb-2">The Pillars of Our Work</p>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white">
-              Our Foundational Principles
+      {/* Founder Story */}
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-900">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
+          <FadeInView>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">
+              Why We Exist
             </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {corePrinciples.map((principle, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="group bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700 hover:shadow-xl hover:border-[#1e56d6]/50 transition-all duration-300"
-              >
-                <div className="mb-6">{principle.icon}</div>
-                <h3 className="text-2xl font-extrabold text-white mb-3 transition-colors group-hover:text-[#1e56d6]">
-                  {principle.title}
-                </h3>
-                <p className="text-gray-400 text-base">
-                  {principle.description}
-                </p>
-              </motion.div>
+            <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+              <p>
+                I started Ripple Nexus after watching companies burn millions on projects that should have cost thousands. 
+                The problem? Most agencies overpromise and underdeliver. They chase vanity metrics instead of production results.
+              </p>
+              <p>
+                We're different. We're engineers first. We've scaled systems to millions of users, migrated legacy monoliths 
+                without downtime, and deployed AI that actually works in production. We know what it takes because we've done it.
+              </p>
+              <p>
+                Our model is simple: transparent pricing, weekly deployments, direct access to senior engineers. 
+                No account managers. No layers. Just you and the people writing code.
+              </p>
+              <p className="text-[#1e56d6] font-semibold">
+                - Ashutosh Shukla, Founder
+              </p>
+            </div>
+          </FadeInView>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-20 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <FadeInView key={index} delay={index * 0.1}>
+                <div className="text-center">
+                  <div className="text-4xl md:text-5xl font-extrabold text-[#1e56d6] mb-2\">{stat.number}</div>
+                  <div className="text-gray-400\">{stat.label}</div>
+                </div>
+              </FadeInView>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-[#1e56d6] to-blue-900 relative overflow-hidden">
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8">
-              Verify Our Capabilities. Start a Dialogue.
+      {/* Principles */}
+      <section className="py-20 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeInView className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              How We Work
             </h2>
-            <a
-              href="/contact"
-              className="inline-block px-8 py-4 bg-white text-[#1e56d6] rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl"
-            >
-              Schedule Your Free Consultation
-            </a>
-          </motion.div>
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+              These aren't values we hang on a wall. They're how we actually operate.
+            </p>
+          </FadeInView>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {principles.map((principle, index) => (
+              <FadeInView key={index} delay={index * 0.1}>
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 hover:border-[#1e56d6]/50 transition-colors">
+                  <div className="mb-4">{principle.icon}</div>
+                  <h3 className="text-2xl font-bold text-white mb-3">{principle.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{principle.description}</p>
+                </div>
+              </FadeInView>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="py-20 bg-gray-950">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeInView className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Certified & Registered
+            </h2>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8">
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <svg className="w-12 h-12 text-[#1e56d6]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                <div className="text-left">
+                  <h3 className="text-xl font-bold text-white">Udyam Certified MSME</h3>
+                  <p className="text-gray-400">Ministry of Micro, Small & Medium Enterprises, Govt. of India</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-500 mt-4">
+                Registered Office: Cospazes, A-116 Urbtech Trade Centre, Sec-132, Noida - 201304, India
+              </p>
+            </div>
+          </FadeInView>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-r from-[#1e56d6] to-blue-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <FadeInView>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Work With Engineers Who Get It
+            </h2>
+            <p className="text-xl text-blue-100 mb-8">
+              30-minute technical consultation. No sales pitch—actual technical discussion.
+            </p>
+            <Link href="/contact">
+              <PremiumButton variant="secondary" size="lg">
+                Schedule Call
+              </PremiumButton>
+            </Link>
+          </FadeInView>
         </div>
       </section>
     </div>

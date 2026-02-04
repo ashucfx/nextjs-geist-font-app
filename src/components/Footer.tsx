@@ -9,19 +9,19 @@ export default function Footer() {
   
   const quickLinks = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'Our Authority' },
-    { href: '/services', label: 'Core Solutions' },
+    { href: '/about', label: 'Our Work' },
+    { href: '/services', label: 'Solutions' },
     { href: '/casestudies', label: 'Case Studies' },
-    { href: '/contact', label: 'Engage Us' }
+    { href: '/contact', label: 'Get Started' }
   ];
 
   const serviceLinks = [
-    { href: '/casestudies?category=Website%20Development', label: 'Bespoke Development' },
-    { href: '/casestudies?category=Digital%20Marketing', label: 'Digital Marketing' },
-    { href: '/casestudies?category=Enterprise%20Solutions', label: 'Cloud Governance & DevOps' },
-    { href: '/casestudies?category=App%20Development', label: 'App Development' },
-    { href: '/casestudies?category=UI/UX', label: 'UX/UI Engineering' },
-    { href: '/casestudies?category=Professional+%26+Career+Branding&+Career+Branding=', label: 'Career & Professional Branding' },
+    { href: '/services/web-mobile-development', label: 'Engineering & Products' },
+    { href: '/services/ai-automation', label: 'AI Solutions' },
+    { href: '/services/cloud-devops', label: 'Infrastructure & Scale' },
+    { href: '/services/digital-marketing', label: 'Growth Strategy' },
+    { href: '/casestudies?category=UI/UX', label: 'Design & UX' },
+    { href: '/services/career-branding', label: 'Career & Brand' },
   ];
   
   const socialLinks = [
@@ -35,24 +35,24 @@ export default function Footer() {
       {/* Divider gradient */}
       <div className="absolute top-0 left-0 right-0 h-px divider-gradient"></div>
 
-      <div className="max-w-7xl mx-auto py-20 md:py-24 lg:py-32 px-6 sm:px-12 lg:px-20">
+      <div className="max-w-7xl mx-auto py-12 sm:py-16 md:py-20 lg:py-24 xl:py-32 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
         
         {/* ENTERPRISE GRID: LEFT (BRAND + SOCIAL) | CENTER (NAV) | RIGHT (MAP) */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 md:gap-12 lg:gap-16">
           
           {/* LEFT ZONE — BRAND AUTHORITY BLOCK */}
-          <div className="md:col-span-3 flex flex-col">
+          <div className="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left">
             
             {/* LOGO BLOCK - Enterprise Anchor */}
-            <div className="mb-8 lg:mb-12">
+            <div className="mb-6 sm:mb-8 lg:mb-12">
               <Link href="/" className="group inline-block">
-                <div className="relative w-[140px] h-[165px] sm:w-[160px] sm:h-[189px] md:w-[160px] md:h-[189px] lg:w-[180px] lg:h-[212px]">
+                <div className="relative w-[120px] h-[142px] sm:w-[140px] sm:h-[165px] md:w-[160px] md:h-[189px] lg:w-[170px] lg:h-[201px]">
                   <Image
                     src="/images/logo-footer.svg"
                     alt="Ripple Nexus - Digital Governance"
                     fill
                     className="object-contain transition-all duration-300 brightness-110 group-hover:brightness-125 group-hover:scale-105"
-                    sizes="(max-width: 640px) 140px, (max-width: 768px) 160px, (max-width: 1024px) 160px, 180px"
+                    sizes="(max-width: 640px) 120px, (max-width: 768px) 140px, (max-width: 1024px) 160px, 170px"
                     priority
                   />
                 </div>
@@ -60,32 +60,32 @@ export default function Footer() {
             </div>
             
             {/* TAGLINE - Brand Statement */}
-            <div className="mb-12 lg:mb-16">
-              <div className="space-y-1 mb-6">
-                <p className="text-sm lg:text-base text-[var(--color-fg)] font-bold leading-snug">
-                  Pioneering Digital Governance.
+            <div className="mb-8 sm:mb-10 lg:mb-16">
+              <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+                <p className="text-sm sm:text-base lg:text-lg text-[var(--color-fg)] font-bold leading-snug">
+                  Innovate. Impact. Scale.
                 </p>
-                <p className="text-xs lg:text-sm text-[var(--color-muted)] font-medium leading-snug">
-                  Securely. Scalably. Compliantly.
+                <p className="text-xs sm:text-sm lg:text-base text-[var(--color-muted)] font-medium leading-snug">
+                  Enterprise-grade solutions for forward-thinking teams.
                 </p>
               </div>
-              <div className="h-1 w-12 bg-gradient-to-r from-primary-400 to-transparent rounded-full"></div>
+              <div className="h-1 w-12 bg-gradient-to-r from-primary-400 to-transparent rounded-full mx-auto lg:mx-0"></div>
             </div>
             
             {/* SOCIAL ICONS - Trust Signal */}
             <div>
-              <h4 className="text-sm font-bold text-[var(--color-fg)] mb-4 uppercase tracking-wide">Follow</h4>
-              <div className="flex space-x-5">
+              <h4 className="text-xs sm:text-sm font-bold text-[var(--color-fg)] mb-3 sm:mb-4 uppercase tracking-wide">Follow</h4>
+              <div className="flex space-x-4 sm:space-x-5 justify-center lg:justify-start">
                 {socialLinks.map(link => (
                   <a 
                     key={link.url}
                     href={link.url} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="w-10 h-10 flex items-center justify-center rounded-lg bg-[var(--color-card)] text-[var(--color-muted)] hover:bg-primary-400 hover:text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1" 
+                    className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-[var(--color-card)] text-[var(--color-muted)] hover:bg-primary-400 hover:text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1" 
                     aria-label={`Visit our ${link.name}`}
                   >
-                    <FontAwesomeIcon icon={['fab', link.icon as any]} className="text-lg" />
+                    <FontAwesomeIcon icon={['fab', link.icon as any]} className="text-base sm:text-lg" />
                   </a>
                 ))}
               </div>
@@ -94,17 +94,17 @@ export default function Footer() {
           </div>
 
           {/* CENTER ZONES — NAVIGATION GROUPS */}
-          <div className="md:col-span-4 grid grid-cols-2 sm:grid-cols-2 gap-8 md:gap-6 lg:gap-8">
+          <div className="lg:col-span-4 grid grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-8">
             
             {/* QUICK LINKS */}
-            <div className="space-y-5">
-              <h3 className="text-sm font-bold text-[var(--color-fg)] uppercase tracking-wide border-b border-[var(--color-border)] pb-3">Navigation</h3>
-              <ul className="space-y-3">
+            <div className="space-y-4 sm:space-y-5">
+              <h3 className="text-xs sm:text-sm font-bold text-[var(--color-fg)] uppercase tracking-wide border-b border-[var(--color-border)] pb-2 sm:pb-3">Navigation</h3>
+              <ul className="space-y-2.5 sm:space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.href}>
                     <Link 
                       href={link.href} 
-                      className="text-sm text-[var(--color-muted)] hover:text-primary-400 transition-all duration-300 hover:translate-x-0.5 inline-block font-medium"
+                      className="text-xs sm:text-sm text-[var(--color-muted)] hover:text-primary-400 transition-all duration-300 hover:translate-x-0.5 inline-block font-medium"
                     >
                       {link.label}
                     </Link>
@@ -114,14 +114,14 @@ export default function Footer() {
             </div>
 
             {/* SOLUTIONS */}
-            <div className="space-y-5">
-              <h3 className="text-sm font-bold text-[var(--color-fg)] uppercase tracking-wide border-b border-[var(--color-border)] pb-3">Solutions</h3>
-              <ul className="space-y-3">
+            <div className="space-y-4 sm:space-y-5">
+              <h3 className="text-xs sm:text-sm font-bold text-[var(--color-fg)] uppercase tracking-wide border-b border-[var(--color-border)] pb-2 sm:pb-3">Solutions</h3>
+              <ul className="space-y-2.5 sm:space-y-3">
                 {serviceLinks.slice(0, 4).map((link, index) => (
                   <li key={index}>
                     <Link 
                       href={link.href} 
-                      className="text-sm text-[var(--color-muted)] hover:text-primary-400 transition-all duration-300 hover:translate-x-0.5 inline-block font-medium"
+                      className="text-xs sm:text-sm text-[var(--color-muted)] hover:text-primary-400 transition-all duration-300 hover:translate-x-0.5 inline-block font-medium"
                     >
                       {link.label}
                     </Link>
@@ -133,10 +133,10 @@ export default function Footer() {
           </div>
 
           {/* RIGHT ZONE — MAPS + CONTACT */}
-          <div className="md:col-span-5 flex flex-col gap-8">
+          <div className="lg:col-span-5 flex flex-col gap-6 sm:gap-8">
             
             {/* MAP SECTION */}
-            <div className="h-64 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-card border border-[var(--color-border)]">
+            <div className="h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 rounded-xl overflow-hidden shadow-card border border-[var(--color-border)]">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.928086071705!2d77.3754128749523!3d28.51181128955354!2m3!1f0!2f0!0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce72d5d23fd2d%3A0xccad56c7a364950a!2sRipple%20Nexus!5e0!3m2!1sen!2sin!4v1760524957424!5m2!1sen!2sin" 
                 width="100%"

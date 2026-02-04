@@ -157,12 +157,32 @@ The project is tested for:
 - Performance impact
 - Error handling
 
+## � Contact Form Email Setup
+
+The contact form integrates with **Resend** for sending emails (FREE tier: 100/day).
+
+**Quick Setup (2 minutes):**
+1. Sign up at https://resend.com
+2. Get API key from https://resend.com/api-keys
+3. Add to `.env.local`: `RESEND_API_KEY=re_your_key_here`
+4. Done! Emails now go to `info@theripplenexus.com`
+
+**Documentation:**
+- [Email Setup Guide](./RESEND_SETUP.md) - Detailed instructions
+- [Setup Checklist](./SETUP_CHECKLIST.md) - Step-by-step checklist
+- [Sample Email](./SAMPLE_EMAIL.md) - See what you'll receive
+
+**Files:**
+- `src/app/api/contact/route.ts` - Backend email handler
+- `src/app/contact/page.tsx` - Contact form
+
 ## 📚 Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Framer Motion Guide](https://www.framer.com/motion/)
 - [Tailwind CSS Docs](https://tailwindcss.com/docs)
 - [Sanity CMS Integration](https://www.sanity.io/)
+- [Resend Email Service](https://resend.com)
 
 ## 🤝 Contributing
 
@@ -174,8 +194,8 @@ Improvements and suggestions are welcome!
 
 ---
 
-**Last Updated**: January 2026  
-**Version**: 2.0 (with AI & Animations)  
+**Last Updated**: February 2026  
+**Version**: 2.1 (with AI, Animations & Email Integration)  
 **Status**: Production Ready
 
 ## Deploy on Vercel

@@ -2,18 +2,17 @@ import './globals.css';
 import RippleNexusCookieBanner from '../components/CookieConsent';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
-import Navbar from '../components/Navbar';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SmoothScroll from '../components/SmoothScroll';
 import BubbleCursor from '../components/BubbleCursor';
 import ThemeProvider from '../components/ThemeProvider';
 import PageTransition from '../components/PageTransition';
+import { organizationSchema, websiteSchema } from '@/lib/schema';
 
 import '@fortawesome/fontawesome-svg-core/styles.css'; 
 
 import '../fontawesome';
-
-import './globals.css';
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -35,11 +34,25 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Ripple Nexus: Strategy. Scale. Impact.",
-  description: "Ripple Nexus delivers end-to-end digital command: from Code to Strategy, Scale to Security, and Branding to Career advancement.",
-  authors: [{ name: "Ripple Nexus Team", url: "https://www.theripplenexus.com" }],
-  creator: "Ripple Nexus Development",
+  title: "Ripple Nexus | Engineering Teams for Complex Technical Transitions",
+  description: "Production-grade web/mobile development, AI automation, and cloud infrastructure. We've built 50+ apps with 99.9% uptime across 12 countries. Transparent pricing. No BS.",
+  authors: [{ name: "Ashutosh Upadhyay", url: "https://www.theripplenexus.com" }],
+  creator: "Ripple Nexus",
   manifest: '/manifest.webmanifest',
+  keywords: ['Next.js development', 'React Native apps', 'AI automation', 'Cloud migration', 'DevOps', 'LangChain', 'AWS', 'Azure', 'GCP'],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://theripplenexus.com',
+    title: 'Ripple Nexus | Engineering Teams for Complex Technical Transitions',
+    description: 'Production-grade web/mobile development, AI automation, and cloud infrastructure. 50+ apps, 99.9% uptime, 12 countries.',
+    siteName: 'Ripple Nexus',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ripple Nexus | Engineering Teams for Complex Technical Transitions',
+    description: 'Production-grade web/mobile development, AI automation, and cloud infrastructure.',
+  },
   icons: {
     icon: [
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -65,9 +78,23 @@ export default function RootLayout({
         <link rel="preload" href="/images/logo-vertical.svg" as="image" type="image/svg+xml" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+        
+        {/* Schema.org Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans min-h-screen antialiased transition-colors duration-300 bg-[var(--color-bg)] text-[var(--color-fg)]`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans min-h-screen antialiased transition-colors duration-300 bg-[#070b14] text-white`}
       >
         <style>{`
           @media (prefers-reduced-motion: reduce) {
@@ -81,10 +108,10 @@ export default function RootLayout({
         <SmoothScroll />
         <BubbleCursor />
 
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
+        <div className="flex flex-col min-h-screen bg-[#070b14]">
+          <Header />
 
-          <main className="flex-grow pt-32 md:pt-28 lg:pt-24 transition-colors duration-300 app-main">
+          <main className="flex-grow bg-[#070b14] transition-colors duration-300 app-main">
             <PageTransition>{children}</PageTransition>
           </main>
 

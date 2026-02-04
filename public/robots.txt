@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private paths (if any)
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://theripplenexus.com/sitemap.xml

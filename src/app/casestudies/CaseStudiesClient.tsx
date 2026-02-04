@@ -134,34 +134,45 @@ const CaseStudyModal: React.FC<{ study: CaseStudy, onClose: () => void }> = ({ s
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm overflow-y-auto cursor-pointer p-4 pt-4 sm:p-8 flex items-center justify-center"
+      className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm cursor-pointer p-4 flex items-center justify-center"
       onClick={onClose}
     >
       <motion.div
         initial={{ y: 50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 50, opacity: 0 }}
-        transition={{ duration: 0.4 }}
-        className="relative max-w-4xl w-full bg-gray-800 rounded-xl shadow-2xl cursor-default my-8"
+        transition={{ duration: 0.3 }}
+        className="relative max-w-4xl w-full max-h-[90vh] bg-gray-800 rounded-xl shadow-2xl cursor-default flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         data-modal
       >
+        {/* Prominent Close Button - Outside modal */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-white hover:text-[#1e56d6] transition-colors z-50 p-2 rounded-full bg-gray-700/50"
+          className="absolute -top-12 right-0 text-white hover:text-red-500 transition-colors z-[110] p-3 rounded-full bg-gray-900 hover:bg-gray-800 shadow-xl border-2 border-gray-700 hover:border-red-500"
           aria-label="Close case study"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        {/* Secondary close button inside */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-white hover:text-red-400 transition-colors z-50 p-2 rounded-full bg-gray-900/80 hover:bg-gray-800"
+          aria-label="Close"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
 
-        <div className="relative h-64 sm:h-80 w-full overflow-hidden rounded-t-xl">
+        {/* Image Header - Fixed height */}
+        <div className="relative h-48 sm:h-64 w-full overflow-hidden flex-shrink-0">
           <Image src={study.image} alt={study.title} fill className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-black/70 flex items-end p-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">{study.title}</h2>
+          <div className="absolute inset-0 bg-black/70 flex items-end p-6 sm:p-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white leading-tight line-clamp-3">{study.title}</h2>
           </div>
         </div>
 
-        <div className="p-6 sm:p-10 space-y-8 text-gray-300"> 
+        {/* Scrollable Content */}
+        <div className="overflow-y-auto flex-1 p-6 sm:p-10 space-y-8 text-gray-300"> 
 
           <div className="flex flex-col sm:flex-row justify-between text-base border-b border-gray-700 pb-4">
             <div className="flex-1 min-w-[40%]">
@@ -195,9 +206,9 @@ const CaseStudyModal: React.FC<{ study: CaseStudy, onClose: () => void }> = ({ s
                 </span>
               ))}
             </div>
-              <p className="text-sm font-semibold text-white mt-4 mb-1">Primary Category:</p>
-              <span className="px-3 py-1 bg-[#1e56d6]/10 text-[#1e56d6] text-xs font-bold rounded-full border border-[#1e56d6]/50">
-                {study.category}
+            <p className="text-sm font-semibold text-white mt-4 mb-1">Primary Category:</p>
+            <span className="px-3 py-1 bg-[#1e56d6]/10 text-[#1e56d6] text-xs font-bold rounded-full border border-[#1e56d6]/50">
+              {study.category}
             </span>
           </div>
 

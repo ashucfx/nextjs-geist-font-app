@@ -94,17 +94,18 @@ export default function Navbar() {
           animate: { y: 0 },
           transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
         })}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-out ${
-          isScrolled 
-            ? 'bg-[#0a0e18] backdrop-blur-lg border-b border-gray-800/50 shadow-lg' 
-            : 'bg-[#070b14] border-b border-gray-900/50'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-out"
+        style={{
+          backgroundColor: isScrolled ? '#0a0e18' : '#070b14',
+          boxShadow: isScrolled ? '0 10px 25px rgba(0, 0, 0, 0.3)' : 'none',
+          backdropFilter: isScrolled ? 'blur(12px)' : 'none'
+        }}
         role="navigation"
         aria-label="Main navigation"
       >
-        {/* CONTAINER — PREMIUM SPACING & BALANCE */}
-        <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 py-5 md:py-6">
-          <div className="flex justify-between items-center gap-8 md:gap-12">
+        {/* CONTAINER — RESPONSIVE COMPACT DESIGN */}
+        <div className="h-16 sm:h-20 w-screen flex items-center px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-7xl flex justify-between items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 h-full">
 
             {/* ========================================================
                 LEFT ZONE — BRAND LOCKUP
@@ -116,11 +117,11 @@ export default function Navbar() {
               onClick={closeMobileMenu}
               aria-label="Ripple Nexus - Home"
             >
-              <div className="flex items-start gap-3 md:gap-4">
-                {/* LOGO — RESPONSIVE SIZING */}
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                {/* LOGO — COMPACT RESPONSIVE SIZING */}
                 <motion.div 
                   className="relative flex-shrink-0"
-                  style={{ width: 'clamp(44px, 6vw, 56px)', height: 'clamp(44px, 6vw, 56px)' }}
+                  style={{ width: 'clamp(36px, 5vw, 48px)', height: 'clamp(36px, 5vw, 48px)' }}
                   {...getWhileHover({ scale: 1.08 })}
                   transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
                 >
@@ -135,24 +136,24 @@ export default function Navbar() {
                 </motion.div>
                 
                 {/* BRAND TEXT + TAGLINE — HIDDEN ON MOBILE */}
-                <div className="hidden sm:flex flex-col gap-1.5 leading-tight justify-center">
+                <div className="hidden sm:flex flex-col gap-0.5 leading-tight justify-center">
                   {/* BRAND NAME */}
                   <motion.div 
-                    className="flex items-baseline gap-1.5"
+                    className="flex items-baseline gap-1"
                     {...getWhileHover({ x: 1 })}
                     transition={{ duration: 0.15, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    <span className="text-lg md:text-xl font-black tracking-tight text-white">
+                    <span className="text-sm md:text-base lg:text-lg font-black tracking-tight text-white">
                       Ripple
                     </span>
-                    <span className="text-lg md:text-xl font-black tracking-tight bg-gradient-to-r from-primary-400 to-primary-500 bg-clip-text text-transparent">
+                    <span className="text-sm md:text-base lg:text-lg font-black tracking-tight bg-gradient-to-r from-primary-400 to-primary-500 bg-clip-text text-transparent">
                       Nexus
                     </span>
                   </motion.div>
                   
                   {/* PREMIUM TAGLINE */}
                   <motion.span 
-                    className="text-xs md:text-sm font-medium tracking-widest text-gray-400 uppercase"
+                    className="text-xs font-medium tracking-widest text-gray-400 uppercase"
                     {...getWhileHover({ x: 0.5 })}
                     transition={{ duration: 0.15 }}
                   >
@@ -241,7 +242,8 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 top-[72px] md:top-[88px] z-40 lg:hidden bg-black/40 backdrop-blur-sm"
+              className="fixed inset-0 z-40 lg:hidden bg-black/60 backdrop-blur-sm"
+              style={{ top: '64px' }}
               onClick={closeMobileMenu}
               aria-hidden="true"
             />
@@ -253,13 +255,16 @@ export default function Navbar() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed top-[72px] md:top-[88px] left-0 right-0 z-50 lg:hidden 
-                        bg-black/98 backdrop-blur-xl border-b border-gray-800/50 
-                        shadow-lg overflow-y-auto max-h-[calc(100vh-88px)]"
+              className="fixed left-0 right-0 z-50 lg:hidden"
+              style={{ 
+                top: '64px',
+                maxHeight: 'calc(100vh - 64px)',
+                backgroundColor: '#070b14'
+              }}
               role="navigation"
               aria-label="Mobile navigation"
             >
-              <div className="mx-auto max-w-7xl px-6 md:px-12 lg:px-16 py-6 space-y-2">
+              <div className="w-screen px-3 sm:px-4 md:px-6 py-4 space-y-1 overflow-y-auto">
                 {/* MOBILE NAV LINKS */}
                 {navLinks.map((link, index) => (
                   <motion.div
@@ -296,7 +301,7 @@ export default function Navbar() {
                     delay: navLinks.length * 0.05, 
                     ease: [0.16, 1, 0.3, 1] 
                   }}
-                  className="pt-4 mt-4 border-t border-gray-800/50"
+                  className="pt-4 mt-4"
                 >
                   <div className="px-4 py-3">
                     <NavbarCTA onClick={closeMobileMenu} />

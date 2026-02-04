@@ -3,6 +3,19 @@
 @tailwind utilities;
 
 :root {
+  /* Header Variables */
+  --header-bg: #070b14;
+  --header-bg-scroll: #0a0e18;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --accent-primary: #3b82f6;
+  --accent-secondary: #8b5cf6;
+  --border-radius: 0.5rem;
+  --transition-smooth: 0.15s ease-out;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-medium: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+  /* Brand Colors */
   --brand-primary-50: #eef3ff;
   --brand-primary-100: #dbe6ff;
   --brand-primary-200: #b7ccff;
@@ -106,16 +119,6 @@ h1, h2, h3, h4, h5, h6 {
   background-size: cover, 140px 140px;
   background-repeat: no-repeat, repeat;
   isolation: isolate;
-}
-
-.app-main::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gradient-surface);
-  opacity: 0.6;
-  pointer-events: none;
-  z-index: 0;
 }
 
 .app-main > * {
