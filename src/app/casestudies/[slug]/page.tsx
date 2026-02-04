@@ -14,9 +14,10 @@ export const generateStaticParams = async () => {
 export const generateMetadata = async ({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> => {
-  const study = getCaseStudyBySlug(params.slug);
+  const { slug } = await params;
+  const study = getCaseStudyBySlug(slug);
 
   if (!study) {
     return {
@@ -43,8 +44,9 @@ export const generateMetadata = async ({
   };
 };
 
-export default function CaseStudyDetailPage({ params }: { params: { slug: string } }) {
-  const study = getCaseStudyBySlug(params.slug);
+export default async function CaseStudyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const study = getCaseStudyBySlug(slug);
 
   if (!study) {
     notFound();
