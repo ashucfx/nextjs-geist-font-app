@@ -69,8 +69,7 @@
 
 .header.scrolled {
   background-color: rgba(10, 14, 24, 0.95);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(59, 130, 246, 0.1);
-  border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
 }
 
 /* ============================================
@@ -164,7 +163,7 @@
 .brandText {
   font-size: 1.25rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #818cf8 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
